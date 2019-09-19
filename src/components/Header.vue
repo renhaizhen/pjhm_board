@@ -5,7 +5,7 @@
       <span class="date">{{date}}</span>
     </div>
     <div class="right">
-      <span>{{time}}</span>
+      <p>{{time}}</p>
     </div>
   </div>
 </template>
@@ -58,13 +58,36 @@ export default {
 <style scoped>
 .headerContainer {
   overflow: hidden;
+  padding-top: 34px;
 }
 .left {
   float: left;
-  width: 36.3%;
+  width: 33.3%;
+  margin-left: 3%;
+}
+.left span{
+  display: inline-block;
+  width: 150px;
+  height: 82px;
+  border-radius: 40px;
+  font-size: 45px;
+  text-align: center;
+  line-height: 82px;
+  margin: 0 1%;
+}
+.week{
+  background-color: #2b9a58;
+}
+.date{
+  background-color: #b4c34c;
 }
 .right {
   display: inline-block;
   width: 63.7%;
+}
+.right p{
+  text-align: center;
+  font-size: 60px;
+  line-height: 82px;
 }
 </style>

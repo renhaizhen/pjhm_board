@@ -1,5 +1,5 @@
 <template>
-  <button @click="handleData">获取</button>
+  <span @click="handleData"></span>
 </template>
 
 <script>
