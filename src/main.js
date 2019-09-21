@@ -5,6 +5,8 @@ import App from './App'
 import VueResource from 'vue-resource'
 import echarts from 'echarts'
 import VueAMap from 'vue-amap'
+import './assets/fonts/fonts.css'
+import './assets/fonts/reset.css'
 Vue.use(VueAMap)
 Vue.prototype.$echarts = echarts
 Vue.config.productionTip = false

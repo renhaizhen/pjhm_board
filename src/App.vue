@@ -1,33 +1,51 @@
 <template>
   <div id="app">
     <div class="container">
-    <Header/>
-    <HelloWorld/>
-    <div class="content">
-      <div class="table">
-        <LeftEcharts/>
+      <div class="left">
+        <div class="leftTop">
+          <Header/>
+        </div>
+        <div class="leftContent">
+          <LeftEcharts/>
+        </div>
+        <div class="leftBottom">
+          <LeftBottom/>
+        </div>
       </div>
-      <div class="map">
+      <div class="right">
+        <div class="rightTop">
+          <RightTop/>
+        </div>
+        <div class="rightContent">
         <HMap/>
+        </div>
+        <div class="rightBottomDes">
+          <RightBottomDes/>
+        </div>
+        <div class="rightBottom"></div>
       </div>
-    </div>
     </div>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld'
-import Header from './components/Header'
+// import HelloWorld from './components/HelloWorld'
+import Header from './components/LeftHeader'
 import LeftEcharts from './components/LeftEcharts'
-import HMap from './components/HMap'
-
+import RightTop from './components/RightTop'
+import HMap from './components/RightMap'
+import LeftBottom from './components/LeftBottom'
+import RightBottomDes from './components/RightBottomDes'
 export default {
   name: 'App',
   components: {
-    HelloWorld,
+    // HelloWorld,
     Header,
     LeftEcharts,
-    HMap
+    LeftBottom,
+    RightTop,
+    HMap,
+    RightBottomDes
   }
 }
 </script>
@@ -47,25 +65,51 @@ export default {
   height: 1080px;
 }
 .container{
-  width: 94.48%;
+  width: 100%;
   background-color: red;
-  margin: 0 auto;
-}
-.content{
-  height: 623px;
-  margin-top: 22px;
   overflow: hidden;
 }
-.table{
-  width: 590px;
-  height: 590px;
-  background-color: aqua;
+.left{
+  width: 777px;
+  height: 1080px;
+  background-color: bisque;
   float: left;
 }
-.map{
-  width: 1190px;
-  height: 520px;
+.leftTop{
+  height: 177px;
+  background-color: green;
+
+}
+.leftContent{
+  height: 701px;
+  background-color: palevioletred;
+
+}
+.leftBottom{
+  height: 202px;
+  background-color: blue;
+  position: relative;
+}
+.right{
+  width: 1143px;
+  height: 1080px;
+  background-color: black;
   float: right;
-  
+}
+.rightTop{
+  height: 180px;
+}
+.rightContent{
+  height: 511px;
+  width: 1139px;
+  border: 2px solid #ffffff;
+}
+.rightBottomDes{
+  height: 130px;
+  background-color: pink;
+}
+.rightBottom{
+  height: 255px;
+  background-color: aquamarine;
 }
 </style>

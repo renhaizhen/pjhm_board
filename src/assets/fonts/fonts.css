@@ -1,0 +1,36 @@
+@font-face {  
+  font-family: 'SHSCNBold';  
+  src: url('./SHSCNBold.otf');  
+  font-weight: normal;  
+  font-style: normal;  
+}
+@font-face {  
+  font-family: 'MONBold';  
+  src: url('./MONBold.ttf');  
+  font-weight: normal;  
+  font-style: normal;  
+}
+@font-face {  
+  font-family: 'MONRegular';  
+  src: url('./MONRegular.ttf');  
+  font-weight: normal;  
+  font-style: normal;  
+}
+@font-face {  
+  font-family: 'SHSCNHeavy';  
+  src: url('./SHSCNHeavy.otf');  
+  font-weight: normal;  
+  font-style: normal;  
+}
+@font-face {  
+  font-family: 'SHSCNMidium';  
+  src: url('./SHSCNMidium.otf');  
+  font-weight: normal;  
+  font-style: normal;  
+}
+@font-face {  
+  font-family: 'SHSCNRegular';  
+  src: url('./SHSCNRegular.otf');  
+  font-weight: normal;  
+  font-style: normal;  
+}
