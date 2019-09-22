@@ -3,13 +3,13 @@
     <div class="desLeft">
       <span>历史客流量统计</span>
     </div>
-    <!-- <div class="desRight">
-      <span>奇迹花园区</span>
-      <span>柳鹫田园区</span>
-      <span>森林游憩区</span>
-      <span>活力森林区</span>
-      <span>滨江漫步区</span>
-    </div> -->
+    <div class="desRight">
+      <span><i class="qiji"></i>奇迹花园区</span>
+      <span><i class="liujiu"></i>柳鹫田园区</span>
+      <span><i class="senlin"></i>森林游憩区</span>
+      <span><i class="huoli"></i>活力森林区</span>
+      <span><i class="binjiang"></i>滨江漫步区</span>
+    </div>
   </div>
 </template>
 
@@ -45,27 +45,41 @@ export default {
   margin-top: 33px;
   margin-left: 10px;
 }
-.desRight{
-    float: right;
-    height: 130px;
-    width: 640px;
+.desRight {
+  float: right;
+  height: 130px;
+  width: 640px;
+  margin-top: 30px;
 }
-.desRight span{
-    font-size: 20px;
-    font-family: 'SHSCNMidium';
-    width: 152px;
-    height: 36px;
-    display: inline-block;
-    position: relative;
+.desRight span {
+  font-size: 20px;
+  font-family: "SHSCNMidium";
+  width: 200px;
+  height: 36px;
+  display: inline-block;
+  position: relative;
 }
-.desRight span::before{
-            content: ' ';
-            position: absolute;
-            right: 173px;
-            top: 0px;
-            width: 25px;
-            height: 25px;
-            background-color: red;
-            border-radius: 50%;
+.desRight span i {
+  position: absolute;
+  right: 225px;
+  top: -1px;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+}
+.qiji{
+  background-color: #ffffff;
+}
+.liujiu{
+  background-color: #a0bd44;
+}
+.senlin{
+  background-color: #e4c64c;
+}
+.huoli{
+  background-color: #5db874;
+}
+.binjiang{
+  background-color: #86ccd6;
 }
 </style>

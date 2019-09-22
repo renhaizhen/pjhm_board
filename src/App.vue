@@ -1,52 +1,12 @@
 <template>
   <div id="app">
-    <div class="container">
-      <div class="left">
-        <div class="leftTop">
-          <Header/>
-        </div>
-        <div class="leftContent">
-          <LeftEcharts/>
-        </div>
-        <div class="leftBottom">
-          <LeftBottom/>
-        </div>
-      </div>
-      <div class="right">
-        <div class="rightTop">
-          <RightTop/>
-        </div>
-        <div class="rightContent">
-        <HMap/>
-        </div>
-        <div class="rightBottomDes">
-          <RightBottomDes/>
-        </div>
-        <div class="rightBottom"></div>
-      </div>
-    </div>
+    <router-view/>
   </div>
 </template>
 
 <script>
-// import HelloWorld from './components/HelloWorld'
-import Header from './components/LeftHeader'
-import LeftEcharts from './components/LeftEcharts'
-import RightTop from './components/RightTop'
-import HMap from './components/RightMap'
-import LeftBottom from './components/LeftBottom'
-import RightBottomDes from './components/RightBottomDes'
 export default {
-  name: 'App',
-  components: {
-    // HelloWorld,
-    Header,
-    LeftEcharts,
-    LeftBottom,
-    RightTop,
-    HMap,
-    RightBottomDes
-  }
+  name: 'App'
 }
 </script>
 
@@ -55,17 +15,21 @@ export default {
   margin: 0;
   padding: 0;
 }
+body{
+  background-color: #2d7140;
+}
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background: #2d7140;
   color: white;
-  width: 1920px;
-  height: 1080px;
+
 }
 .container{
-  width: 100%;
+  /* width: 100%; */
+  width: 1920px;
+  height: 1080px;
   background-color: red;
   overflow: hidden;
 }
@@ -110,6 +74,6 @@ export default {
 }
 .rightBottom{
   height: 255px;
-  background-color: aquamarine;
+  background-color: #2d6d3e;
 }
 </style>

@@ -12,6 +12,11 @@ export default {
       text: '上海浦江郊野公园数据大屏'
     }
   },
+  mounted(){
+    let a = JSON.parse(localStorage.getItem("userData"))
+    console.log(a)
+    this.text = a.title
+  }
 }
 </script>
 <style scoped>
