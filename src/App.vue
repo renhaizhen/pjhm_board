@@ -23,13 +23,11 @@ body{
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: white;
-  width: 1920px;
 }
 .container{
   /* width: 100%; */
   width: 1920px;
   height: 1080px;
-  background-color: red;
   overflow: hidden;
 }
 .left{

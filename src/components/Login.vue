@@ -29,7 +29,7 @@ export default {
       console.log(this.$refs.account.value,this.$refs.password.value)
       let account = this.$refs.account.value
       let password = this.$refs.password.value
-      console.log(this.accountTitle[1].heson)
+      console.log(this.accountTitle[1].binjiang)
       if(account=='binjiang'&&password=='123'){
         var userData = {'account':account,"password":password,"title":this.accountTitle[0].binjiang};
         localStorage.setItem("userData",JSON.stringify(userData));
@@ -45,7 +45,7 @@ export default {
         this.$router.push({
         name: 'Board',
         params: {
-          title:this.accountTitle[1].pujiang
+          title:this.accountTitle[0].pujiang
         }
       })
       }

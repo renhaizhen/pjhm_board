@@ -172,7 +172,7 @@ export default {
     };
   },
   created() {
-    // this.showData()
+    this.showData()
   },
   mounted() {
     this.drawChartQiji();
@@ -369,11 +369,11 @@ export default {
       });
     },
     //获取数据
-    // showData(){
-    //    this.$http.post('/api/home/tourNum').then(data=>{
-		// 	console.log(data.body)
-		// })
-    // }
+    showData(){
+       this.$http.post('/api/home/tourNum').then(data=>{
+			console.log(data.body)
+		})
+    }
   }
 };
 </script>
