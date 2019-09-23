@@ -12,9 +12,9 @@ export default {
   },
   methods: {
     handleData(){
-       this.$http.post('/api/home/tourNum').then(data=>{
-			console.log(data.body)
-		})
+    //    this.$http.post('/api/home/tourNum').then(data=>{
+		// 	console.log(data.body)
+		// })
     }
   },
 }

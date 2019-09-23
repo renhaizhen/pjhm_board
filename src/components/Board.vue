@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <div class="container">
+  <div class="borderBox">
+    <div class="container" :style="url">
       <div class="left">
         <div class="leftTop">
           <Header/>
@@ -50,9 +50,18 @@ export default {
     HMap,
     RightBottomDes,
     RightBottom
-  }
+  },
+  data() {
+    return {
+      url:{
+        backgroundImage:"url("+require('../assets/bg.png')+")",
+        backgroundSize:"100%",
+　　　　 backgroundRepeat:"no-repeat",
+      }
+    }
+  },
 }
 </script>
 
-<style>
+<style scoped>
 </style>

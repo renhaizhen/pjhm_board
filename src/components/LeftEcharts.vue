@@ -2,11 +2,41 @@
   <div>
     <span class="text">实时客流量</span>
     <div class="mycharts">
-      <div ref="qiji" class="chart" :style="{width:chartWidth,height:chartHeight}"></div>
-      <div ref="huoli" class="chart" :style="{width:chartWidth,height:chartHeight}"></div>
-      <div ref="liujiu" class="chart" :style="{width:chartWidth,height:chartHeight}"></div>
-      <div ref="binjiang" class="chart binjiang" :style="{width:chartWidth,height:chartHeight}"></div>
-      <div ref="senlin" class="chart senlin" :style="{width:chartWidth,height:chartHeight}"></div>
+      <div
+        ref="qiji"
+        :data-title="allTitle.qiji"
+        class="chart qiji"
+        :style="{width:chartWidth,height:chartHeight}"
+      ></div>
+      <div
+        ref="huoli"
+        :data-title="allTitle.huoli"
+        class="chart"
+        :style="{width:chartWidth,height:chartHeight}"
+      ></div>
+      <div
+        ref="liujiu"
+        :data-title="allTitle.liujiu"
+        class="chart"
+        :style="{width:chartWidth,height:chartHeight}"
+      ></div>
+      <div
+        ref="binjiang"
+        :data-title="allTitle.binjiang"
+        class="chart binjiang"
+        :style="{width:chartWidth,height:chartHeight}"
+      ></div>
+      <div
+        ref="senlin"
+        :data-title="allTitle.senlin"
+        class="chart senlin"
+        :style="{width:chartWidth,height:chartHeight}"
+      ></div>
+      <span class="iconqiji" :style="iconImg.qiji">{{countPeople.qiji}}</span>
+      <span class="iconhuoli" :style="iconImg.huoli">{{countPeople.huoli}}</span>
+      <span class="iconliujiu" :style="iconImg.liujiu">{{countPeople.liujiu}}</span>
+      <span class="iconbinjiang" :style="iconImg.binjiang">{{countPeople.binjiang}}</span>
+      <span class="iconsenlin" :style="iconImg.senlin">{{countPeople.senlin}}</span>
     </div>
   </div>
 </template>
@@ -16,22 +46,36 @@ export default {
   name: "LeftEcharts",
   data() {
     return {
-      chartWidth: "250px",
-      chartHeight: "250px"
-    };
-  },
-  created() {},
-  mounted() {
-    this.drawChartQiji();
-    this.drawChartHuoli();
-    this.drawChartLiujiu();
-    this.drawChartBinjiang();
-    this.drawChartSenlin();
-  },
-  methods: {
-    drawChartQiji() {
-      let Chart = echarts.init(this.$refs.qiji);
-      Chart.setOption({
+      chartWidth: "240px",
+      chartHeight: "240px",
+      iconImg: {
+        qiji: {
+          backgroundImage: "url(" + require("../assets/qiji.png") + ")",
+          backgroundSize: "100%",
+          backgroundRepeat: "no-repeat"
+        },
+        huoli: {
+          backgroundImage: "url(" + require("../assets/huoli.png") + ")",
+          backgroundSize: "100%",
+          backgroundRepeat: "no-repeat"
+        },
+        liujiu: {
+          backgroundImage: "url(" + require("../assets/liujiu.png") + ")",
+          backgroundSize: "100%",
+          backgroundRepeat: "no-repeat"
+        },
+        binjiang: {
+          backgroundImage: "url(" + require("../assets/binjiang.png") + ")",
+          backgroundSize: "100%",
+          backgroundRepeat: "no-repeat"
+        },
+        senlin: {
+          backgroundImage: "url(" + require("../assets/senlin.png") + ")",
+          backgroundSize: "100%",
+          backgroundRepeat: "no-repeat"
+        }
+      },
+      options: {
         grid: {
           x: 40,
           y: 30,
@@ -62,8 +106,8 @@ export default {
           axisLine: {
             show: true,
             lineStyle: {
-              color: "rgba(219,225,255,1)",
-              width: 0,
+              color: "rgba(219,225,255,.5)",
+              width: 1,
               type: "solid"
             }
           }
@@ -84,7 +128,7 @@ export default {
           axisLine: {
             show: true,
             lineStyle: {
-              color: "rgba(219,225,255,1)",
+              color: "rgba(219,225,255,.5)",
               width: 1,
               type: "solid"
             }
@@ -110,19 +154,78 @@ export default {
             }
           }
         ]
+      },
+      allTitle: {
+        qiji: "奇迹花园区",
+        huoli: "活力花园区",
+        liujiu: "柳鹫花园区",
+        binjiang: "滨江花园区",
+        senlin: "森林花园区"
+      },
+      countPeople:{
+        qiji:'1005',
+        huoli:'1005',
+        liujiu:'1005',
+        binjiang:'1005',
+        senlin:'1005'
+      }
+    };
+  },
+  created() {
+    // this.showData()
+  },
+  mounted() {
+    this.drawChartQiji();
+    this.drawChartHuoli();
+    this.drawChartLiujiu();
+    this.drawChartBinjiang();
+    this.drawChartSenlin();
+    console.log(this.$refs.senlin.dataset.title);
+  },
+  methods: {
+    drawChartQiji() {
+      let Chart = echarts.init(this.$refs.qiji);
+      Chart.setOption({
+        grid: this.options.grid,
+        title: {
+          text: this.$refs.qiji.dataset.title,
+          left: "center",
+          textStyle: {
+            fontSize: 20,
+            fontFamily: "SHSCNMidium",
+            color: "#ffffff",
+          }
+        },
+        xAxis: this.options.xAxis,
+        yAxis: this.options.yAxis,
+        series: [
+          {
+            symbol: "none", //拐点样式
+            smooth: true,
+            itemStyle: {
+              color: "transparent"
+            },
+            data: [180, 502, 601, 555, 850, 900],
+            type: "line",
+            areaStyle: {
+              normal: {
+                color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+                  { offset: 0, color: "#ffffff" },
+                  { offset: 0.5, color: "#fbfaf6" },
+                  { offset: 1, color: "#2d6d3f" }
+                ])
+              }
+            }
+          }
+        ]
       });
     },
     drawChartHuoli() {
       let Chart = echarts.init(this.$refs.huoli);
       Chart.setOption({
-        grid: {
-          x: 40,
-          y: 30,
-          x2: 10,
-          y2: 30
-        },
+        grid: this.options.grid,
         title: {
-          text: "活力花园区",
+          text: this.$refs.huoli.dataset.title,
           left: "center",
           textStyle: {
             fontSize: 20,
@@ -130,57 +233,16 @@ export default {
             color: "#ffffff"
           }
         },
-        xAxis: {
-          type: "category",
-          boundaryGap: false,
-          data: [" ", "9时", "11时", "13时", "15时", "实时"],
-          axisLabel: {
-            textStyle: {
-              color: "#ffffff"
-            }
-          },
-          splitLine: {
-            show: false
-          },
-          axisLine: {
-            show: true,
-            lineStyle: {
-              color: "rgba(219,225,255,1)",
-              width: 0,
-              type: "solid"
-            }
-          }
-        },
-        yAxis: {
-          type: "value",
-          minInterval: 0,
-          interval: 250,
-          max: 1000,
-          splitLine: {
-            show: false
-          },
-          axisLabel: {
-            textStyle: {
-              color: "#ffffff"
-            }
-          },
-          axisLine: {
-            show: true,
-            lineStyle: {
-              color: "rgba(219,225,255,1)",
-              width: 1,
-              type: "solid"
-            }
-          }
-        },
+        xAxis: this.options.xAxis,
+        yAxis: this.options.yAxis,
         series: [
           {
             symbol: "none", //拐点样式
             smooth: true,
             itemStyle: {
-              color: "#cc9966"
+              color: "transparent"
             },
-            data: [180, 502, 601, 555, 900, 1005],
+            data: [180, 502, 601, 555, 850, 900],
             type: "line",
             areaStyle: {
               normal: {
@@ -198,14 +260,9 @@ export default {
     drawChartLiujiu() {
       let Chart = echarts.init(this.$refs.liujiu);
       Chart.setOption({
-        grid: {
-          x: 40,
-          y: 30,
-          x2: 10,
-          y2: 30
-        },
+        grid: this.options.grid,
         title: {
-          text: "柳鹫花园区",
+          text: this.$refs.liujiu.dataset.title,
           left: "center",
           textStyle: {
             fontSize: 20,
@@ -213,57 +270,16 @@ export default {
             color: "#ffffff"
           }
         },
-        xAxis: {
-          type: "category",
-          boundaryGap: false,
-          data: [" ", "9时", "11时", "13时", "15时", "实时"],
-          axisLabel: {
-            textStyle: {
-              color: "#ffffff"
-            }
-          },
-          splitLine: {
-            show: false
-          },
-          axisLine: {
-            show: true,
-            lineStyle: {
-              color: "rgba(219,225,255,1)",
-              width: 0,
-              type: "solid"
-            }
-          }
-        },
-        yAxis: {
-          type: "value",
-          minInterval: 0,
-          interval: 250,
-          max: 1000,
-          splitLine: {
-            show: false
-          },
-          axisLabel: {
-            textStyle: {
-              color: "#ffffff"
-            }
-          },
-          axisLine: {
-            show: true,
-            lineStyle: {
-              color: "rgba(219,225,255,1)",
-              width: 1,
-              type: "solid"
-            }
-          }
-        },
+        xAxis: this.options.xAxis,
+        yAxis: this.options.yAxis,
         series: [
           {
             symbol: "none", //拐点样式
             smooth: true,
             itemStyle: {
-              color: "#cc9966"
+              color: "transparent"
             },
-            data: [180, 502, 601, 555, 900, 1005],
+            data: [180, 502, 601, 555, 850, 900],
             type: "line",
             areaStyle: {
               normal: {
@@ -281,14 +297,9 @@ export default {
     drawChartBinjiang() {
       let Chart = echarts.init(this.$refs.binjiang);
       Chart.setOption({
-        grid: {
-          x: 40,
-          y: 30,
-          x2: 10,
-          y2: 30
-        },
+        grid: this.options.grid,
         title: {
-          text: "滨江花园区",
+          text: this.$refs.binjiang.dataset.title,
           left: "center",
           textStyle: {
             fontSize: 20,
@@ -296,57 +307,16 @@ export default {
             color: "#ffffff"
           }
         },
-        xAxis: {
-          type: "category",
-          boundaryGap: false,
-          data: [" ", "9时", "11时", "13时", "15时", "实时"],
-          axisLabel: {
-            textStyle: {
-              color: "#ffffff"
-            }
-          },
-          splitLine: {
-            show: false
-          },
-          axisLine: {
-            show: true,
-            lineStyle: {
-              color: "rgba(219,225,255,1)",
-              width: 0,
-              type: "solid"
-            }
-          }
-        },
-        yAxis: {
-          type: "value",
-          minInterval: 0,
-          interval: 250,
-          max: 1000,
-          splitLine: {
-            show: false
-          },
-          axisLabel: {
-            textStyle: {
-              color: "#ffffff"
-            }
-          },
-          axisLine: {
-            show: true,
-            lineStyle: {
-              color: "rgba(219,225,255,1)",
-              width: 1,
-              type: "solid"
-            }
-          }
-        },
+        xAxis: this.options.xAxis,
+        yAxis: this.options.yAxis,
         series: [
           {
             symbol: "none", //拐点样式
             smooth: true,
             itemStyle: {
-              color: "#cc9966"
+              color: "transparent"
             },
-            data: [180, 502, 601, 555, 900, 1005],
+            data: [180, 502, 601, 555, 850, 900],
             type: "line",
             areaStyle: {
               normal: {
@@ -364,14 +334,9 @@ export default {
     drawChartSenlin() {
       let Chart = echarts.init(this.$refs.senlin);
       Chart.setOption({
-        grid: {
-          x: 40,
-          y: 30,
-          x2: 10,
-          y2: 30
-        },
+        grid: this.options.grid,
         title: {
-          text: "森林花园区",
+          text: this.$refs.senlin.dataset.title,
           left: "center",
           textStyle: {
             fontSize: 20,
@@ -379,57 +344,16 @@ export default {
             color: "#ffffff"
           }
         },
-        xAxis: {
-          type: "category",
-          boundaryGap: false,
-          data: [" ", "9时", "11时", "13时", "15时", "实时"],
-          axisLabel: {
-            textStyle: {
-              color: "#ffffff"
-            }
-          },
-          splitLine: {
-            show: false
-          },
-          axisLine: {
-            show: true,
-            lineStyle: {
-              color: "rgba(219,225,255,1)",
-              width: 0,
-              type: "solid"
-            }
-          }
-        },
-        yAxis: {
-          type: "value",
-          minInterval: 0,
-          interval: 250,
-          max: 1000,
-          splitLine: {
-            show: false
-          },
-          axisLabel: {
-            textStyle: {
-              color: "#ffffff"
-            }
-          },
-          axisLine: {
-            show: true,
-            lineStyle: {
-              color: "rgba(219,225,255,1)",
-              width: 1,
-              type: "solid"
-            }
-          }
-        },
+        xAxis: this.options.xAxis,
+        yAxis: this.options.yAxis,
         series: [
           {
             symbol: "none", //拐点样式
             smooth: true,
             itemStyle: {
-              color: "#cc9966"
+              color: "transparent"
             },
-            data: [180, 502, 601, 555, 900, 1005],
+            data: [180, 502, 601, 555, 850, 900],
             type: "line",
             areaStyle: {
               normal: {
@@ -443,7 +367,13 @@ export default {
           }
         ]
       });
-    }
+    },
+    //获取数据
+    // showData(){
+    //    this.$http.post('/api/home/tourNum').then(data=>{
+		// 	console.log(data.body)
+		// })
+    // }
   }
 };
 </script>
@@ -469,6 +399,41 @@ export default {
 }
 .mycharts {
   overflow: hidden;
+  position: relative;
+}
+.mycharts span {
+  position: absolute;
+  width: 46px;
+  height: 30px;
+  font-size: 14px;
+  font-family: 'SHSCNHeavy';
+  color: #ffffff;
+  text-align: center;
+  line-height: 37px;
+}
+.mycharts .iconqiji {
+  top: 38px;
+  left: 205px;
+  color: #2d6d3f;
+}
+.iconhuoli {
+  top: 38px;
+  left: 453px;
+}
+.iconliujiu {
+  top: 38px;
+  left: 700px;
+}
+.iconbinjiang {
+  top: 310px;
+  left: 330px;
+}
+.iconsenlin {
+  top: 310px;
+  left: 583px;
+}
+.qiji{
+  margin-left: 15px;
 }
 .binjiang {
   margin-left: 140px;

@@ -9,14 +9,15 @@ export default {
   name: 'RightTop',
   data () {
     return {
-      text: '上海浦江郊野公园数据大屏'
+      text: '上海浦江郊野公园数据大屏',
+      date:'2019-04-04T06:23:15.000Z'
     }
   },
   mounted(){
     let a = JSON.parse(localStorage.getItem("userData"))
     console.log(a)
     this.text = a.title
-  }
+  },
 }
 </script>
 <style scoped>

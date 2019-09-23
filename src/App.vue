@@ -16,15 +16,14 @@ export default {
   padding: 0;
 }
 body{
-  background-color: #2d7140;
+  /* background-color: #2d7140; */
 }
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: #2d7140;
   color: white;
-
+  width: 1920px;
 }
 .container{
   /* width: 100%; */
@@ -36,28 +35,28 @@ body{
 .left{
   width: 777px;
   height: 1080px;
-  background-color: bisque;
+  /* background-color: bisque; */
   float: left;
 }
 .leftTop{
   height: 177px;
-  background-color: green;
+  /* background-color: green; */
 
 }
 .leftContent{
   height: 701px;
-  background-color: palevioletred;
+  /* background-color: palevioletred; */
 
 }
 .leftBottom{
   height: 202px;
-  background-color: blue;
+  /* background-color: blue; */
   position: relative;
 }
 .right{
   width: 1143px;
   height: 1080px;
-  background-color: black;
+  /* background-color: black; */
   float: right;
 }
 .rightTop{
@@ -66,14 +65,15 @@ body{
 .rightContent{
   height: 511px;
   width: 1139px;
-  border: 2px solid #ffffff;
+  border: 1px solid #ffffff;
+  margin-top: 3px;
 }
 .rightBottomDes{
   height: 130px;
-  background-color: pink;
+  /* background-color: pink; */
 }
 .rightBottom{
   height: 255px;
-  background-color: #2d6d3e;
+  /* background-color: #2d6d3e; */
 }
 </style>

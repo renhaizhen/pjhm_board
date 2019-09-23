@@ -16,10 +16,10 @@ export default {
     return {
       accountTitle: [
         {
-          'renhaizhen':'上海滨江花园公园数据大屏'
+          'binjiang':'上海滨江花园公园数据大屏'
         },
         {
-          'heson':'上海浦江郊野公园数据大屏'
+          'pujiang':'上海浦江郊野公园数据大屏'
         }
       ]
     };
@@ -30,22 +30,22 @@ export default {
       let account = this.$refs.account.value
       let password = this.$refs.password.value
       console.log(this.accountTitle[1].heson)
-      if(account=='renhaizhen'&&password=='123'){
-        var userData = {'account':account,"password":password,"title":this.accountTitle[0].renhaizhen};
+      if(account=='binjiang'&&password=='123'){
+        var userData = {'account':account,"password":password,"title":this.accountTitle[0].binjiang};
         localStorage.setItem("userData",JSON.stringify(userData));
         this.$router.push({
         name: 'Board',
         params: {
-          title:this.accountTitle[0].renhaizhen
+          title:this.accountTitle[0].binjiang
         }
       })
-      }else if(account=='heson'&&password=='123'){
-        var userData = {'account':account,"password":password,"title":this.accountTitle[1].heson};
+      }else if(account=='pujiang'&&password=='123'){
+        var userData = {'account':account,"password":password,"title":this.accountTitle[1].pujiang};
         localStorage.setItem("userData",JSON.stringify(userData));
         this.$router.push({
         name: 'Board',
         params: {
-          title:this.accountTitle[1].heson
+          title:this.accountTitle[1].pujiang
         }
       })
       }
