@@ -12,13 +12,6 @@ export default {
     return {
       chartWidth: "1054px",
       chartHeight: "207px",
-      // options: {
-      //   qijiData: [600, 400, 930, 500, 400, 300, 300, 300],
-      //   liujiuData: [850, 720, 600, 5000, 630, 630, 630, 630],
-      //   senlinData: [550, 420, 300, 730, 230, 430, 430, 430],
-      //   huoliData: [300, 120, 88, 91, 50, 40, 99, 51],
-      //   binjiangData: [99, 88, 110, 130, 150, 163, 180, 170]
-      // },
       setOption: {
         backgroundColor: "#2d6d3e",
         grid: {
@@ -176,7 +169,8 @@ export default {
             }
           }
         ]
-      }
+      },
+      seriesData:null
     };
   },
   created() {
@@ -228,20 +222,44 @@ export default {
             .split(" ")[0]
             .replace("-", "/");
         });
-        console.log(this.setOption.series[0].data, "before");
+        // console.log(this.setOption.series[0].data, "before");
         this.setOption.series[0].data = data.body.map(item => {
           return item.value;
         });
-        console.log(this.setOption.series[0].data, "after");
-        console.log(this.setOption.series, 454545666666);
+        console.log(data.body,'1');
+        this.seriesData = this.setOption.series.map((item,index)=>{
+          return item.data
+        })
       });
       this.$http.post("/api/home/rightLiujiu").then(data => {
+        console.log(data.body,'2')
+        this.seriesData[1] = data.body.map(item=>{
+          return item.value
+        })
       });
       this.$http.post("/api/home/rightSenlin").then(data => {
+         console.log(data.body,'3')
+        this.seriesData[2] = data.body.map(item=>{
+          return item.value
+        })
       });
       this.$http.post("/api/home/rightHuoli").then(data => {
+         console.log(data.body,'4')
+        this.seriesData[3] = data.body.map(item=>{
+          return item.value
+        })
       });
       this.$http.post("/api/home/rightBinjiang").then(data => {
+         console.log(data.body,'5',this.seriesData,this.setOption.series)
+        this.seriesData[4] = data.body.map(item=>{
+          return item.value
+        })
+        this.setOption.series.forEach((item,index,arr)=>{
+          console.log(item,index,arr[index].data,this.seriesData[index])
+          
+          arr[index].data = this.seriesData[index]
+        })
+        console.log(this.seriesData,this.setOption.series)
       });
     }
   }
