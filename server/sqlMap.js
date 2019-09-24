@@ -10,7 +10,13 @@ console.log(datetime)
 var sqlMap = {
   data: {
       tourNum: "select * from getui_tournum where create_time like '%" +  datetimes + "%'",
-    }
+      rightQiji:" SELECT * FROM getui_tournum where  `name` = '奇迹花园区' AND DATE_SUB(CURDATE(), INTERVAL 62 DAY) < date(time) ORDER BY time ASC ",
+      rightLiujiu:" SELECT * FROM getui_tournum where  `name` = '柳鹭田园区' AND DATE_SUB(CURDATE(), INTERVAL 62 DAY) < date(time) ORDER BY time ASC ",
+      rightSenlin:" SELECT * FROM getui_tournum where  `name` = '森林游憩区' AND DATE_SUB(CURDATE(), INTERVAL 62 DAY) < date(time) ORDER BY time ASC ",
+      rightHuoli:" SELECT * FROM getui_tournum where  `name` = '活力森林区' AND DATE_SUB(CURDATE(), INTERVAL 62 DAY) < date(time) ORDER BY time ASC ",
+      rightBinjiang:" SELECT * FROM getui_tournum where  `name` = '滨江漫步区' AND DATE_SUB(CURDATE(), INTERVAL 62 DAY) < date(time) ORDER BY time ASC ",
+    },
 }
+
 
 module.exports = sqlMap
