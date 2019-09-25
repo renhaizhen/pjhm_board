@@ -3,6 +3,8 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
+import Vuex from 'vuex'
+import store from './store/index'
 import VueResource from 'vue-resource'
 import echarts from 'echarts'
 import VueAMap from 'vue-amap'
@@ -11,7 +13,7 @@ import './assets/fonts/reset.css'
 Vue.use(VueAMap)
 Vue.prototype.$echarts = echarts
 Vue.config.productionTip = false
-
+Vue.use(Vuex)
 Vue.use(VueResource)
 VueAMap.initAMapApiLoader({
   key:'ff38603d7b67a443b8a7d8b822757b71',
@@ -32,6 +34,7 @@ VueAMap.initAMapApiLoader({
 new Vue({
   el: '#app',
   router,
+  store,
   components: { App },
   template: '<App/>'
 })

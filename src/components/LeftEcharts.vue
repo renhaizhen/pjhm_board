@@ -241,6 +241,7 @@ export default {
   created() {
     this.showData()
     this.yanTime()
+    this.yanTimes()
   },
   mounted() {
     this.drawChartQiji();
@@ -490,7 +491,8 @@ export default {
     currentPeople(){
       this.currentAllPeople = this.countPeople.qiji+this.countPeople.huoli+this.countPeople.liujiu+this.countPeople.binjiang+this.countPeople.senlin
       console.log(this.currentAllPeople,'当前在园总人数')
-        localStorage.setItem("allpeople",this.currentAllPeople);
+      this.$store.state.count = this.currentAllPeople
+      console.log(this.$store.state.count)
     },
     //延时执行测试
     yanTime(){
@@ -498,7 +500,14 @@ export default {
         console.log('延时')
         this.huoliData = [48, 74, 123, 42, 300]
         this.countPeople.huoli = 300
-      }, 20000);
+      }, 8000);
+    },
+    yanTimes(){
+      setTimeout(() => {
+        console.log('延时2')
+        this.huoliData = [77, 30, 88, 142, 40]
+        this.countPeople.huoli = 40
+      }, 2000);
     }
 
   }
