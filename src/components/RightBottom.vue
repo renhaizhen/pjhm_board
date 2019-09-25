@@ -68,8 +68,8 @@ export default {
           {
             type: "value",
             minInterval: 0,
-            interval: 1250,
-            max: 5000,
+            interval: 1000,
+            max: 4000,
             axisLabel: {
               textStyle: {
                 color: "#ffffff",

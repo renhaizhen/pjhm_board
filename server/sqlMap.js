@@ -15,6 +15,11 @@ var sqlMap = {
       rightSenlin:" SELECT * FROM getui_tournum where  `name` = '森林游憩区' AND DATE_SUB(CURDATE(), INTERVAL 62 DAY) < date(time) ORDER BY time ASC ",
       rightHuoli:" SELECT * FROM getui_tournum where  `name` = '活力森林区' AND DATE_SUB(CURDATE(), INTERVAL 62 DAY) < date(time) ORDER BY time ASC ",
       rightBinjiang:" SELECT * FROM getui_tournum where  `name` = '滨江漫步区' AND DATE_SUB(CURDATE(), INTERVAL 62 DAY) < date(time) ORDER BY time ASC ",
+      leftQiji:"select from_unixtime(UNIX_TIMESTAMP(time), '%Y-%m-%d %H'),FLOOR(AVG(`value`)) AS `value` from getui_heatmap_showsum where name = '奇迹花园区' group by  FLOOR(from_unixtime(UNIX_TIMESTAMP(time), '%H')/2)",
+      leftHuoli:"select from_unixtime(UNIX_TIMESTAMP(time), '%Y-%m-%d %H'),FLOOR(AVG(`value`)) AS `value` from getui_heatmap_showsum where name = '活力森林区' group by  FLOOR(from_unixtime(UNIX_TIMESTAMP(time), '%H')/2)",
+      leftLiujiu:"select from_unixtime(UNIX_TIMESTAMP(time), '%Y-%m-%d %H'),FLOOR(AVG(`value`)) AS `value` from getui_heatmap_showsum where name = '柳鹭田园区' group by  FLOOR(from_unixtime(UNIX_TIMESTAMP(time), '%H')/2)",
+      leftBinjiang:"select from_unixtime(UNIX_TIMESTAMP(time), '%Y-%m-%d %H'),FLOOR(AVG(`value`)) AS `value` from getui_heatmap_showsum where name = '滨江漫步区' group by  FLOOR(from_unixtime(UNIX_TIMESTAMP(time), '%H')/2)",
+      leftSenlin:"select from_unixtime(UNIX_TIMESTAMP(time), '%Y-%m-%d %H'),FLOOR(AVG(`value`)) AS `value` from getui_heatmap_showsum where name = '森林游憩区' group by  FLOOR(from_unixtime(UNIX_TIMESTAMP(time), '%H')/2)"
     },
 }
 

@@ -94,8 +94,9 @@ export default {
         xAxis: {
           type: "category",
           boundaryGap: false,
-          data: [" ", "9时", "11时", "13时", "15时", "实时"],
+          data: [" ", "6时", "8时","10时","12时","实时"],
           axisLabel: {
+             interval:0,
             textStyle: {
               color: "#ffffff"
             }
@@ -115,8 +116,8 @@ export default {
         yAxis: {
           type: "value",
           minInterval: 0,
-          interval: 250,
-          max: 1000,
+          interval: 125,
+          max: 500,
           splitLine: {
             show: false
           },
@@ -134,45 +135,112 @@ export default {
             }
           }
         },
-        series: [
-          {
-            symbol: "none", //拐点样式
-            smooth: true,
-            itemStyle: {
-              color: "#cc9966"
-            },
-            data: [180, 502, 601, 555, 900, 1005],
-            type: "line",
-            areaStyle: {
-              normal: {
-                color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
-                  { offset: 0, color: "#ffffff" },
-                  { offset: 0.5, color: "#fbfaf6" },
-                  { offset: 1, color: "#2d6d3f" }
-                ])
-              }
-            }
-          }
-        ]
       },
       allTitle: {
         qiji: "奇迹花园区",
-        huoli: "活力花园区",
-        liujiu: "柳鹫花园区",
-        binjiang: "滨江花园区",
-        senlin: "森林花园区"
+        huoli: "活力森林区",
+        liujiu: "柳鹭田园区",
+        binjiang: "滨江漫步区",
+        senlin: "森林游憩区"
       },
       countPeople:{
-        qiji:'1005',
-        huoli:'1005',
-        liujiu:'1005',
-        binjiang:'1005',
-        senlin:'1005'
-      }
+        qiji:1005,
+        huoli:1005,
+        liujiu:1005,
+        binjiang:1005,
+        senlin:1005
+      },
+      qijiData:[],
+      huoliData:[],
+      liujiuData:[],
+      binjiangData:[],
+      senlinData:[],
+      currentAllPeople:2500
     };
+  },
+   watch: {
+    //观察seriesData的变化
+    qijiData: {
+      handler(newVal, oldVal) {
+        if (this.qijiChart) {
+          if (newVal) {
+            this.qijiChart.setOption(newVal);
+          } else {
+            this.qijiChart.setOption(oldVal);
+          }
+        } else {
+          this.drawChartQiji();
+        }
+      },
+      deep: true //对象内部属性的监听，关键。
+    },
+    huoliData: {
+      handler(newVal, oldVal) {
+        if (this.huoliChart) {
+          if (newVal) {
+            this.huoliChart.setOption(newVal);
+          } else {
+            this.huoliChart.setOption(oldVal);
+          }
+        } else {
+          this.drawChartHuoli();
+        }
+      },
+      deep: true //对象内部属性的监听，关键。
+    },
+     liujiuData: {
+      handler(newVal, oldVal) {
+        if (this.liujiuChart) {
+          if (newVal) {
+            this.liujiuChart.setOption(newVal);
+          } else {
+            this.liujiuChart.setOption(oldVal);
+          }
+        } else {
+          this.drawChartLiujiu();
+        }
+      },
+      deep: true //对象内部属性的监听，关键。
+    },
+    binjiangData: {
+      handler(newVal, oldVal) {
+        if (this.binjiangChart) {
+          if (newVal) {
+            this.binjiangChart.setOption(newVal);
+          } else {
+            this.binjiangChart.setOption(oldVal);
+          }
+        } else {
+          this.drawChartBinjiang();
+        }
+      },
+      deep: true //对象内部属性的监听，关键。
+    },
+    senlinData: {
+      handler(newVal, oldVal) {
+        if (this.senlinChart) {
+          if (newVal) {
+            this.senlinChart.setOption(newVal);
+          } else {
+            this.senlinChart.setOption(oldVal);
+          }
+        } else {
+          this.drawChartSenlin();
+        }
+      },
+      deep: true //对象内部属性的监听，关键。
+    },
+    countPeople:{
+      handler(newVal, oldVal) {
+          console.log(newVal,oldVal)
+          this.currentPeople()
+      },
+      deep: true //对象内部属性的监听，关键。
+    }
   },
   created() {
     this.showData()
+    this.yanTime()
   },
   mounted() {
     this.drawChartQiji();
@@ -180,12 +248,62 @@ export default {
     this.drawChartLiujiu();
     this.drawChartBinjiang();
     this.drawChartSenlin();
-    console.log(this.$refs.senlin.dataset.title);
+    this.currentPeople()
   },
   methods: {
+        //获取数据
+    showData(){
+       this.$http.post("/api/home/leftQiji").then(data => {
+        console.log(data.body,'奇迹')
+        var qiji = data.body.map(item=>{
+          return item.value
+        })
+        let b = qiji.splice(0,2)
+        this.qijiData = qiji
+        this.countPeople.qiji = qiji[qiji.length-1]
+      });
+      this.$http.post("/api/home/leftHuoli").then(data => {
+        console.log(data.body,'活力')
+        var huoli = data.body.map(item=>{
+          return item.value
+        })
+        let b = huoli.splice(0,2)
+        this.huoliData = huoli
+        this.countPeople.huoli = huoli[huoli.length-1]
+        console.log(this.countPeople.huoli,'huoliiiiiii')
+      });
+      this.$http.post("/api/home/leftLiujiu").then(data => {
+        console.log(data.body,'柳鹫')
+        var liujiu = data.body.map(item=>{
+          return item.value
+        })
+        let b = liujiu.splice(0,2)
+        this.liujiuData = liujiu
+        this.countPeople.liujiu = liujiu[liujiu.length-1]
+      });
+      this.$http.post("/api/home/leftBinjiang").then(data => {
+        console.log(data.body,'滨江')
+        var binjiang = data.body.map(item=>{
+          return item.value
+        })
+        let b = binjiang.splice(0,2)
+        this.binjiangData = binjiang
+        this.countPeople.binjiang = binjiang[binjiang.length-1]
+      });
+      this.$http.post("/api/home/leftSenlin").then(data => {
+        console.log(data.body,'森林')
+        var senlin = data.body.map(item=>{
+          return item.value
+        })
+        let b = senlin.splice(0,2)
+        this.senlinData = senlin
+        this.countPeople.senlin = senlin[senlin.length-1]
+        // console.log(this.qijiData,this.huoliData,this.liujiuData,this.binjiangData,this.senlinData,'kkkkk')
+      });
+    },
     drawChartQiji() {
-      let Chart = echarts.init(this.$refs.qiji);
-      Chart.setOption({
+      let qijiChart = echarts.init(this.$refs.qiji);
+      qijiChart.setOption({
         grid: this.options.grid,
         title: {
           text: this.$refs.qiji.dataset.title,
@@ -205,7 +323,7 @@ export default {
             itemStyle: {
               color: "transparent"
             },
-            data: [180, 502, 601, 555, 850, 900],
+            data: this.qijiData,
             type: "line",
             areaStyle: {
               normal: {
@@ -242,7 +360,7 @@ export default {
             itemStyle: {
               color: "transparent"
             },
-            data: [180, 502, 601, 555, 850, 900],
+            data: this.huoliData,
             type: "line",
             areaStyle: {
               normal: {
@@ -258,8 +376,8 @@ export default {
       });
     },
     drawChartLiujiu() {
-      let Chart = echarts.init(this.$refs.liujiu);
-      Chart.setOption({
+      let liujiuChart = echarts.init(this.$refs.liujiu);
+      liujiuChart.setOption({
         grid: this.options.grid,
         title: {
           text: this.$refs.liujiu.dataset.title,
@@ -279,7 +397,7 @@ export default {
             itemStyle: {
               color: "transparent"
             },
-            data: [180, 502, 601, 555, 850, 900],
+            data: this.liujiuData,
             type: "line",
             areaStyle: {
               normal: {
@@ -295,8 +413,8 @@ export default {
       });
     },
     drawChartBinjiang() {
-      let Chart = echarts.init(this.$refs.binjiang);
-      Chart.setOption({
+      let binjiangChart = echarts.init(this.$refs.binjiang);
+      binjiangChart.setOption({
         grid: this.options.grid,
         title: {
           text: this.$refs.binjiang.dataset.title,
@@ -316,7 +434,7 @@ export default {
             itemStyle: {
               color: "transparent"
             },
-            data: [180, 502, 601, 555, 850, 900],
+            data: this.binjiangData,
             type: "line",
             areaStyle: {
               normal: {
@@ -332,8 +450,8 @@ export default {
       });
     },
     drawChartSenlin() {
-      let Chart = echarts.init(this.$refs.senlin);
-      Chart.setOption({
+      let senlinChart = echarts.init(this.$refs.senlin);
+      senlinChart.setOption({
         grid: this.options.grid,
         title: {
           text: this.$refs.senlin.dataset.title,
@@ -353,7 +471,7 @@ export default {
             itemStyle: {
               color: "transparent"
             },
-            data: [180, 502, 601, 555, 850, 900],
+            data: this.senlinData,
             type: "line",
             areaStyle: {
               normal: {
@@ -368,12 +486,21 @@ export default {
         ]
       });
     },
-    //获取数据
-    showData(){
-       this.$http.post('/api/home/tourNum').then(data=>{
-			console.log(data.body)
-		})
+    //计算当前在园总人数
+    currentPeople(){
+      this.currentAllPeople = this.countPeople.qiji+this.countPeople.huoli+this.countPeople.liujiu+this.countPeople.binjiang+this.countPeople.senlin
+      console.log(this.currentAllPeople,'当前在园总人数')
+        localStorage.setItem("allpeople",this.currentAllPeople);
+    },
+    //延时执行测试
+    yanTime(){
+      setTimeout(() => {
+        console.log('延时')
+        this.huoliData = [48, 74, 123, 42, 300]
+        this.countPeople.huoli = 300
+      }, 20000);
     }
+
   }
 };
 </script>

@@ -5,7 +5,7 @@
     </div>
     <div class="desRight">
       <span><i class="qiji"></i>奇迹花园区</span>
-      <span><i class="liujiu"></i>柳鹫田园区</span>
+      <span><i class="liujiu"></i>柳鹭田园区</span>
       <span><i class="senlin"></i>森林游憩区</span>
       <span><i class="huoli"></i>活力森林区</span>
       <span><i class="binjiang"></i>滨江漫步区</span>

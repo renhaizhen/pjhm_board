@@ -1,7 +1,7 @@
 <template>
   <div class="bottomText">
       <span class="text">当前在园总人数</span>
-      <span class="count">2500人</span>
+      <span class="count">{{count}}人</span>
   </div>
 </template>
 
@@ -10,14 +10,14 @@ export default {
   name: 'LeftBottom',
   data () {
     return {
-      count: null
+      count: 2600
     }
   },
   methods: {
-    // handleData(){
-    //    this.$http.post('/api/home/tourNum').then(data=>{
-	// 		console.log(data.body)
-	// 	})
+    // getSum(){
+    //   let a = JSON.parse(localStorage.getItem("userData"))
+    // console.log(a)
+    // this.count = a.title
     // }
   },
 }

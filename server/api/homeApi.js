@@ -115,4 +115,84 @@ router.post('/rightLiujiu', (req, res) => {
   })
 })
 
+// 拉取奇迹花园区域动态游客总数
+router.post('/leftQiji', (req, res) => {
+  var sql = $sql.data.leftQiji
+  // var params = req.body
+  // console.log(params)
+  conn.query(sql, function (err, result) {
+    if (err) {
+      console.log(err)
+    }
+    if (result) {
+      jsonWrite(res, result)
+      console.log(result)
+    }
+  })
+})
+
+// 拉取活力花园区域实时游客总数
+router.post('/leftHuoli', (req, res) => {
+  var sql = $sql.data.leftHuoli
+  // var params = req.body
+  // console.log(params)
+  conn.query(sql, function (err, result) {
+    if (err) {
+      console.log(err)
+    }
+    if (result) {
+      jsonWrite(res, result)
+      console.log(result)
+    }
+  })
+})
+
+// 拉取柳鹫田园实时游客总数
+router.post('/leftLiujiu', (req, res) => {
+  var sql = $sql.data.leftLiujiu
+  // var params = req.body
+  // console.log(params)
+  conn.query(sql, function (err, result) {
+    if (err) {
+      console.log(err)
+    }
+    if (result) {
+      jsonWrite(res, result)
+      console.log(result)
+    }
+  })
+})
+
+// 拉取各滨江漫步区域实时游客总数
+router.post('/leftBinjiang', (req, res) => {
+  var sql = $sql.data.leftBinjiang
+  // var params = req.body
+  // console.log(params)
+  conn.query(sql, function (err, result) {
+    if (err) {
+      console.log(err)
+    }
+    if (result) {
+      jsonWrite(res, result)
+      console.log(result)
+    }
+  })
+})
+
+// 拉取森林游憩区域实时游客总数
+router.post('/leftSenlin', (req, res) => {
+  var sql = $sql.data.leftSenlin
+  // var params = req.body
+  // console.log(params)
+  conn.query(sql, function (err, result) {
+    if (err) {
+      console.log(err)
+    }
+    if (result) {
+      jsonWrite(res, result)
+      console.log(result)
+    }
+  })
+})
+
   module.exports = router
