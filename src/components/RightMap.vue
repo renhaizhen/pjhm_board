@@ -31,7 +31,7 @@
           ],
           mapEvents: {
                 init(o) {
-                     o.setMapStyle('amap://styles/lbs.amap.com/dev/mapstyle/clone?id=ceee819ff37b0613795bcc2b80635d9e');//自定义的高德地图的样式                  
+                     o.setMapStyle('amap://styles/31444436f4e6420ee2c6b4ecec90f75f');//自定义的高德地图的样式                  
                }
           }
         }

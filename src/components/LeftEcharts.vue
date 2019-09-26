@@ -239,7 +239,6 @@ export default {
   },
   created() {
     this.showData()
-    this.yanTime()
   },
   mounted() {
     this.drawChartQiji();
@@ -248,7 +247,7 @@ export default {
     this.drawChartBinjiang();
     this.drawChartSenlin();
     this.currentPeople()
-    this.yanTimes()
+    this.yanTime()
   },
   methods: {
         //获取数据
@@ -523,11 +522,11 @@ export default {
         }
       }, 100000);
     },
-    yanTimes(){
-      setInterval(() => {
-        this.showData()
-      }, 100000);
-    },
+    // yanTimes(){
+    //   setInterval(() => {
+    //     this.showData()
+    //   }, 100000);
+    // },
   }
 };
 </script>

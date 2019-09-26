@@ -101,13 +101,13 @@ export default {
           {
             name: "奇迹花园区",
             type: "bar",
-            data: [850, 720, 5000, 830, 630, 630, 630, 630],
-            barWidth: 10,
+            data: [630, 630, 630, 630, 630, 630, 630, 630],
+            barWidth:15,
             barGap: 0, //柱间距离
             itemStyle: {
               //图形样式
               normal: {
-                barBorderRadius: [5, 5, 0, 0],
+                barBorderRadius: [10, 10, 0, 0],
                 color: "#ffffff"
               }
             }
@@ -115,13 +115,13 @@ export default {
           {
             name: "柳鹫田园区",
             type: "bar",
-            data: [850, 720, 600, 830, 5000, 630, 630, 630],
-            barWidth: 10,
+            data: [630, 630, 630, 630, 630, 630, 630, 630],
+            barWidth: 15,
             barGap: 0, //柱间距离
             itemStyle: {
               //图形样式
               normal: {
-                barBorderRadius: [5, 5, 0, 0],
+                barBorderRadius: [10, 10, 0, 0],
                 color: "#a0bd44"
               }
             }
@@ -129,13 +129,13 @@ export default {
           {
             name: "森林游憩区",
             type: "bar",
-            data: [850, 720, 600, 830, 630, 630, 630, 630],
-            barWidth: 10,
+            data: [630, 630, 630, 630, 630, 630, 630, 630],
+            barWidth: 15,
             barGap: 0.2, //柱间距离
             itemStyle: {
               //图形样式
               normal: {
-                barBorderRadius: [5, 5, 0, 0],
+                barBorderRadius: [10, 10, 0, 0],
                 color: "#e4c64c"
               }
             }
@@ -143,13 +143,13 @@ export default {
           {
             name: "活力游憩区",
             type: "bar",
-            data: [850, 720, 600, 830, 630, 630, 630, 630],
-            barWidth: 10,
+            data: [630, 630, 630, 630, 630, 630, 630, 630],
+            barWidth: 15,
             barGap: 0, //柱间距离
             itemStyle: {
               //图形样式
               normal: {
-                barBorderRadius: [5, 5, 0, 0],
+                barBorderRadius: [10, 10, 0, 0],
                 color: "#5db874"
               }
             }
@@ -157,13 +157,13 @@ export default {
           {
             name: "滨江漫步区",
             type: "bar",
-            data: [300, 720, 600, 830, 630, 630, 630, 630],
-            barWidth: 10,
+            data: [630, 630, 630, 630, 630, 630, 630, 630],
+            barWidth: 15,
             barGap: 0, //柱间距离
             itemStyle: {
               //图形样式
               normal: {
-                barBorderRadius: [5, 5, 0, 0],
+                barBorderRadius: [10, 10, 0, 0],
                 color: "#86ccd6"
               }
             }
@@ -231,12 +231,14 @@ export default {
         this.seriesData = this.setOption.series.map((item,index)=>{
           return item.data
         })
+        console.log(this.seriesData,'pppp')
       });
       this.$http.post("/api/home/rightLiujiu").then(data => {
         console.log(data.body,'2')
         this.seriesData[1] = data.body.map(item=>{
           return item.value
         })
+        
       });
       this.$http.post("/api/home/rightSenlin").then(data => {
          console.log(data.body,'3')
