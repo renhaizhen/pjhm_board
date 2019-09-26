@@ -94,7 +94,7 @@ export default {
         xAxis: {
           type: "category",
           boundaryGap: false,
-          data: [" ", "6时", "8时","10时","12时","实时"],
+          data: [" ", "2时", "4时","6时","8时","实时"],
           axisLabel: {
              interval:0,
             textStyle: {
@@ -155,7 +155,7 @@ export default {
       liujiuData:[],
       binjiangData:[],
       senlinData:[],
-      currentAllPeople:2500
+      currentAllPeople:2500,
     };
   },
    watch: {
@@ -232,16 +232,14 @@ export default {
     },
     countPeople:{
       handler(newVal, oldVal) {
-          console.log(newVal,oldVal)
           this.currentPeople()
       },
-      deep: true //对象内部属性的监听，关键。
+      deep: true 
     }
   },
   created() {
     this.showData()
     this.yanTime()
-    this.yanTimes()
   },
   mounted() {
     this.drawChartQiji();
@@ -250,16 +248,24 @@ export default {
     this.drawChartBinjiang();
     this.drawChartSenlin();
     this.currentPeople()
+    this.yanTimes()
   },
   methods: {
         //获取数据
     showData(){
+       //获取当前时间
+        var newDate = new Date();
+        var hours = newDate.getHours();
+        hours = hours < 10 ? "0" + hours : hours;
        this.$http.post("/api/home/leftQiji").then(data => {
         console.log(data.body,'奇迹')
         var qiji = data.body.map(item=>{
           return item.value
         })
-        let b = qiji.splice(0,2)
+        if(hours>=10){
+          var b = qiji.splice(0,6)
+          this.options.xAxis.data= [" ", "14时", "16时","18时","20时","实时"]
+        }
         this.qijiData = qiji
         this.countPeople.qiji = qiji[qiji.length-1]
       });
@@ -268,7 +274,9 @@ export default {
         var huoli = data.body.map(item=>{
           return item.value
         })
-        let b = huoli.splice(0,2)
+         if(hours>=10){
+          var b = huoli.splice(0,6)
+        }
         this.huoliData = huoli
         this.countPeople.huoli = huoli[huoli.length-1]
         console.log(this.countPeople.huoli,'huoliiiiiii')
@@ -278,7 +286,9 @@ export default {
         var liujiu = data.body.map(item=>{
           return item.value
         })
-        let b = liujiu.splice(0,2)
+        if(hours>=10){
+          var b = liujiu.splice(0,6)
+        }
         this.liujiuData = liujiu
         this.countPeople.liujiu = liujiu[liujiu.length-1]
       });
@@ -287,7 +297,9 @@ export default {
         var binjiang = data.body.map(item=>{
           return item.value
         })
-        let b = binjiang.splice(0,2)
+        if(hours>=10){
+          var b = binjiang.splice(0,6)
+        }
         this.binjiangData = binjiang
         this.countPeople.binjiang = binjiang[binjiang.length-1]
       });
@@ -296,7 +308,9 @@ export default {
         var senlin = data.body.map(item=>{
           return item.value
         })
-        let b = senlin.splice(0,2)
+        if(hours>=10){
+          var b = senlin.splice(0,6)
+        }
         this.senlinData = senlin
         this.countPeople.senlin = senlin[senlin.length-1]
         // console.log(this.qijiData,this.huoliData,this.liujiuData,this.binjiangData,this.senlinData,'kkkkk')
@@ -496,20 +510,24 @@ export default {
     },
     //延时执行测试
     yanTime(){
-      setTimeout(() => {
-        console.log('延时')
-        this.huoliData = [48, 74, 123, 42, 300]
-        this.countPeople.huoli = 300
-      }, 8000);
+       setInterval(() => {
+        var newDate = new Date();
+        var hours = newDate.getHours();
+        var minutes = newDate.getMinutes();
+        hours = hours < 10 ? "0" + hours : hours;
+        minutes = minutes < 10 ? "0" + minutes : minutes;
+        //这里暂时定为20s请求一次数据
+        if(hours%2==0 && 10<Number(minutes)<45){
+          this.showData()
+          console.log('我请求了一次数据')
+        }
+      }, 1200000);
     },
     yanTimes(){
-      setTimeout(() => {
-        console.log('延时2')
-        this.huoliData = [77, 30, 88, 142, 40]
-        this.countPeople.huoli = 40
-      }, 2000);
-    }
-
+      setInterval(() => {
+        this.showData()
+      }, 7200000);
+    },
   }
 };
 </script>

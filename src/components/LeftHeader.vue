@@ -25,7 +25,7 @@ export default {
     getTime() {
       setInterval(() => {
         var newDate = new Date();
-        console.log(newDate);
+        // console.log(newDate);
         //获取月日和具体时间
         var month = newDate.getMonth() + 1;
         var day = newDate.getDate();

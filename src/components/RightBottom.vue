@@ -179,6 +179,7 @@ export default {
   mounted() {
     // this.drawChartMyChart();
     this.init();
+    this.eightDayData()
   },
   watch: {
     //观察option的变化
@@ -261,6 +262,11 @@ export default {
         })
         console.log(this.seriesData,this.setOption.series)
       });
+    },
+    eightDayData(){
+      setInterval(() => {
+        this.getAllDayData()
+      }, 43200000);
     }
   }
 };
