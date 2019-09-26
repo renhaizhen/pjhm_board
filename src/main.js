@@ -16,7 +16,7 @@ Vue.config.productionTip = false
 Vue.use(Vuex)
 Vue.use(VueResource)
 VueAMap.initAMapApiLoader({
-  key:'8325164e247e15eea68b59e89200988b',
+  key:'ff38603d7b67a443b8a7d8b822757b71',
   //ff38603d7b67a443b8a7d8b822757b71
   plugin: [
     "AMap.Autocomplete", //输入提示插件

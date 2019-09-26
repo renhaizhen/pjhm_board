@@ -1,6 +1,6 @@
 <template>
     <div class="amap-wrapper">
-      <el-amap class="amap-box" :vid="'amap-vue'"></el-amap>
+      <el-amap class="amap-box" :vid="'amap-vue'" :events="mapEvents"></el-amap>
     </div>
   </template>
 
@@ -28,7 +28,12 @@
                 }
               }
             }
-          ]
+          ],
+          mapEvents: {
+                init(o) {
+                     o.setMapStyle('amap://styles/lbs.amap.com/dev/mapstyle/clone?id=ceee819ff37b0613795bcc2b80635d9e');//自定义的高德地图的样式                  
+               }
+          }
         }
       }
     }

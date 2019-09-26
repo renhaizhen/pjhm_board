@@ -517,16 +517,16 @@ export default {
         hours = hours < 10 ? "0" + hours : hours;
         minutes = minutes < 10 ? "0" + minutes : minutes;
         //这里暂时定为20s请求一次数据
-        if(hours%2==0 && 10<Number(minutes)<45){
+        if(hours%2==0 && 7<Number(minutes)<45){
           this.showData()
           console.log('我请求了一次数据')
         }
-      }, 1200000);
+      }, 100000);
     },
     yanTimes(){
       setInterval(() => {
         this.showData()
-      }, 7200000);
+      }, 100000);
     },
   }
 };
