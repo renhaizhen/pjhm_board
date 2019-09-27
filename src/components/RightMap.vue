@@ -2,15 +2,16 @@
   <div class="container">
     <template>
     <div class="amap-wrapper">
-       <el-amap class="amap-box"
+       <el-amap class="cont"
         :amap-manager="amapManager"
         :vid="'amap-vue'"
         :zoom="zoom"
         :center="center"
         :events="events"
       >
-       <el-amap-polygon v-for="(polygon, index) in polygons" :vid="index" :path="polygon.path" :draggable="polygon.draggable" :key="index"></el-amap-polygon>
+       <el-amap-polygon v-for="(polygon, index) in polygons" :vid="index" :path="polygon.path" :strokeWeight="polygon.strokeWeight" :fillColor="polygon.fillColor" :strokeColor="polygon.strokeColor" :fillOpacity="polygon.fillOpacity" :strokeOpacity="polygon.strokeOpacity" :draggable="polygon.draggable" :key="index"></el-amap-polygon>
      </el-amap>
+     <div id="container"></div>
     </div>
   </template>
       <!--
@@ -35,6 +36,7 @@
 <script>
 import {AMapManager, lazyAMapApiLoaderInstance} from 'vue-amap'
 let amapManager = new AMapManager()
+// var map = new AMap.Map("container")
 export default {
   name:'HMap',
   data () {
@@ -45,11 +47,11 @@ export default {
       zoom: 14,
       polygons:[
         {
-          strokeWeight: 4, 
+          strokeWeight: 2, 
           strokeColor: "#19A4EB", 
           strokeOpacity: 0.8, 
-          fillColor: "#19A4EB", 
-          fillOpacity:0.2,
+          fillColor: "green", 
+          fillOpacity:0.1,
           draggable: false,
           path: [
         [121.490164,31.058288], 
@@ -111,64 +113,17 @@ export default {
          o.setMapStyle('amap://styles/31444436f4e6420ee2c6b4ecec90f75f');//自定义的高德地图的样式  
         },
       },
+      // plugin:[
+      //   {
+      //      pName: 'Heatmap',
+      //     events: {
+      //       init (instance) {
+      //         console.log(instance);
+      //       }
+      //     }
+      //   }
+      // ]
     }
   },
-  mounted() {
-    // this.initMap()
-  },
-  //  methods:{
-  //           initMap(){
-  //               let map =  new AMap.Map('container', {
-	// 				features: ['bg', 'road'],
-	// 				resizeEnable: true,
-	// 				center: [116.397428, 39.90923],
-	// 				zoom: 11,
-	// 				viewMode: '2D',
-	// 				pitch: 50,
-	// 				showZoomBar:true,
-	// 			});
-  //                   let heatmap;	
-  //                   let heatmapData=[];
-  //                   //从接口获取数据 
-  //                   //官网示例数据结构 http://a.amap.com/jsapi_demos/static/resource/heatmapData.js
-	// 	      this.$http.get("http://a.amap.com/jsapi_demos/static/resource/heatmapData.js").then(res => {
-	// 			if(res.success) {					
-	// 				if(res.data){
-	// 					res.data.forEach(item=>{
-	// 						let obj={
-	// 							lng:item.longitude,
-	// 							lat:item.latitude,
-	// 							count:item.count,
-	// 						}
-	// 						heatmapData.push(obj);
-	// 					})
-	// 					map.plugin(["AMap.Heatmap"], function() {
-	// 						//初始化heatmap对象
-	// 						 heatmap = new AMap.Heatmap(map, {
-	// 						      radius: 25, //给定半径
-	// 						      opacity: [0, 0.8],
-	// 						      gradient:{
-	// 						        0.5: 'blue',
-	// 						        0.65: 'rgb(117,211,248)',
-	// 						        0.7: 'rgb(0, 255, 0)',
-	// 						        0.9: '#ffea00',
-	// 						        1.0: 'red'
-	// 						     }
-	// 						});
-	// 						//设置数据集
-	// 						heatmap.setDataSet({
-	// 							data: heatmapData,
-	// 								max: 5
-	// 							});
-	// 						});
-	// 				}else{
-	// 					heatmapData =[];
-	// 				}
-	// 			} else {
-	// 				heatmapData =[];
-	// 			}
-	// 		});
-  //       }
-  //   },
 }
 </script>
