@@ -29,7 +29,8 @@ VueAMap.initAMapApiLoader({
     "AMap.CircleEditor", //圆形编辑器插件
     "AMap.Geolocation" //定位控件，用来获取和展示用户主机所在的经纬度位置
   ],
-  v: '1.4.4'
+  v: '1.4.4',
+  uiVersion: '1.0'
 })
 /* eslint-disable no-new */
 new Vue({

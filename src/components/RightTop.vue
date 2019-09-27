@@ -17,7 +17,7 @@ export default {
     let a = JSON.parse(localStorage.getItem("userData"))
     console.log(a)
     this.text = a.title
-  },
+  }, 
 }
 </script>
 <style scoped>

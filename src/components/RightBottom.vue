@@ -101,7 +101,7 @@ export default {
           {
             name: "奇迹花园区",
             type: "bar",
-            data: [630, 630, 630, 630, 630, 630, 630, 630],
+            data: [3342, 2644, 3101, 3968, 1537, 1681, 1994],
             barWidth:15,
             barGap: 0, //柱间距离
             itemStyle: {
@@ -115,7 +115,7 @@ export default {
           {
             name: "柳鹫田园区",
             type: "bar",
-            data: [630, 630, 630, 630, 630, 630, 630, 630],
+            data: [354, 40, 636, 214, 3099, 57, 73],
             barWidth: 15,
             barGap: 0, //柱间距离
             itemStyle: {
@@ -129,7 +129,7 @@ export default {
           {
             name: "森林游憩区",
             type: "bar",
-            data: [630, 630, 630, 630, 630, 630, 630, 630],
+            data: [207, 195, 195, 195, 134, 219, 244],
             barWidth: 15,
             barGap: 0.2, //柱间距离
             itemStyle: {
@@ -141,9 +141,9 @@ export default {
             }
           },
           {
-            name: "活力游憩区",
+            name: "活力森林区",
             type: "bar",
-            data: [630, 630, 630, 630, 630, 630, 630, 630],
+            data: [254, 331, 246, 292, 200, 238, 223],
             barWidth: 15,
             barGap: 0, //柱间距离
             itemStyle: {
@@ -157,7 +157,7 @@ export default {
           {
             name: "滨江漫步区",
             type: "bar",
-            data: [630, 630, 630, 630, 630, 630, 630, 630],
+            data: [1708, 1823, 1665, 1738, 1567, 1360, 1549],
             barWidth: 15,
             barGap: 0, //柱间距离
             itemStyle: {
@@ -227,48 +227,48 @@ export default {
         this.setOption.series[0].data = data.body.map(item => {
           return item.value;
         });
-        console.log(data.body,'1');
         this.seriesData = this.setOption.series.map((item,index)=>{
           return item.data
         })
-        console.log(this.seriesData,'pppp')
       });
       this.$http.post("/api/home/rightLiujiu").then(data => {
-        console.log(data.body,'2')
         this.seriesData[1] = data.body.map(item=>{
           return item.value
         })
         
       });
       this.$http.post("/api/home/rightSenlin").then(data => {
-         console.log(data.body,'3')
         this.seriesData[2] = data.body.map(item=>{
           return item.value
         })
       });
       this.$http.post("/api/home/rightHuoli").then(data => {
-         console.log(data.body,'4')
         this.seriesData[3] = data.body.map(item=>{
           return item.value
         })
       });
       this.$http.post("/api/home/rightBinjiang").then(data => {
-         console.log(data.body,'5',this.seriesData,this.setOption.series)
         this.seriesData[4] = data.body.map(item=>{
           return item.value
         })
         this.setOption.series.forEach((item,index,arr)=>{
-          console.log(item,index,arr[index].data,this.seriesData[index])
           
           arr[index].data = this.seriesData[index]
         })
-        console.log(this.seriesData,this.setOption.series)
       });
     },
     eightDayData(){
       setInterval(() => {
-        this.getAllDayData()
-      }, 43200000);
+        //10:10请求数据更新当日数据
+        var newDate = new Date();
+        var hours = newDate.getHours();
+        var minutes = newDate.getMinutes();
+        hours = hours < 10 ? "0" + hours : hours;
+        minutes = minutes < 10 ? "0" + minutes : minutes;
+        if(hours==10&&minutes==10){
+          this.getAllDayData()
+        }
+      }, 1000);
     }
   }
 };

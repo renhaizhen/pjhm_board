@@ -257,62 +257,69 @@ export default {
         var hours = newDate.getHours();
         hours = hours < 10 ? "0" + hours : hours;
        this.$http.post("/api/home/leftQiji").then(data => {
-        console.log(data.body,'奇迹')
         var qiji = data.body.map(item=>{
           return item.value
         })
-        if(hours>=10){
-          var b = qiji.splice(0,6)
-          this.options.xAxis.data= [" ", "14时", "16时","18时","20时","实时"]
+        if(hours>=12){
+          var b = qiji.splice(0,5)
+          this.options.xAxis.data= ["", "12时", "14时","16时","18时","实时"]
+          this.qijiData = qiji
+        }else{
+          this.qijiData = qiji
         }
-        this.qijiData = qiji
         this.countPeople.qiji = qiji[qiji.length-1]
       });
       this.$http.post("/api/home/leftHuoli").then(data => {
-        console.log(data.body,'活力')
         var huoli = data.body.map(item=>{
           return item.value
         })
-         if(hours>=10){
-          var b = huoli.splice(0,6)
-        }
+         if(hours>=12){
+          var b = huoli.splice(0,5)
+          this.options.xAxis.data= ["", "12时", "14时","16时","18时","实时"]
+          this.huoliData = huoli
+        }else{
         this.huoliData = huoli
+        }
         this.countPeople.huoli = huoli[huoli.length-1]
-        console.log(this.countPeople.huoli,'huoliiiiiii')
       });
       this.$http.post("/api/home/leftLiujiu").then(data => {
-        console.log(data.body,'柳鹫')
         var liujiu = data.body.map(item=>{
           return item.value
         })
-        if(hours>=10){
-          var b = liujiu.splice(0,6)
-        }
+        if(hours>=12){
+          var b = liujiu.splice(0,5)
+          this.options.xAxis.data= ["", "12时", "14时","16时","18时","实时"]
+          this.liujiuData = liujiu
+        }else{
         this.liujiuData = liujiu
+        }
         this.countPeople.liujiu = liujiu[liujiu.length-1]
       });
       this.$http.post("/api/home/leftBinjiang").then(data => {
-        console.log(data.body,'滨江')
         var binjiang = data.body.map(item=>{
           return item.value
         })
-        if(hours>=10){
-          var b = binjiang.splice(0,6)
-        }
+        if(hours>=12){
+          var b = binjiang.splice(0,5)
+          this.options.xAxis.data= ["", "12时", "14时","16时","18时","实时"]
+          this.binjiangData = binjiang
+        }else{
         this.binjiangData = binjiang
+        }
         this.countPeople.binjiang = binjiang[binjiang.length-1]
       });
       this.$http.post("/api/home/leftSenlin").then(data => {
-        console.log(data.body,'森林')
         var senlin = data.body.map(item=>{
           return item.value
         })
-        if(hours>=10){
-          var b = senlin.splice(0,6)
-        }
+        if(hours>=12){
+          var b = senlin.splice(0,5)
+          this.options.xAxis.data= ["", "12时", "14时","16时","18时","实时"]
+          this.senlinData = senlin
+        }else{
         this.senlinData = senlin
+        }
         this.countPeople.senlin = senlin[senlin.length-1]
-        // console.log(this.qijiData,this.huoliData,this.liujiuData,this.binjiangData,this.senlinData,'kkkkk')
       });
     },
     drawChartQiji() {
@@ -520,7 +527,7 @@ export default {
           this.showData()
           console.log('我请求了一次数据')
         }
-      }, 100000);
+      }, 1000000);
     },
     // yanTimes(){
     //   setInterval(() => {
