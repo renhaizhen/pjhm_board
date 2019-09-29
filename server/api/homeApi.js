@@ -195,4 +195,21 @@ router.post('/leftSenlin', (req, res) => {
   })
 })
 
+// 拉取热力图数据
+router.post('/heatMapData', (req, res) => {
+  var sql = $sql.data.heatMapData
+  // var params = req.body
+  // console.log(params)
+  conn.query(sql, function (err, result) {
+    if (err) {
+      console.log(err)
+    }
+    if (result) {
+      jsonWrite(res, result)
+      console.log(result)
+    }
+  })
+})
+
+
   module.exports = router

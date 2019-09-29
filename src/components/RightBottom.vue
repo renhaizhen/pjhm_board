@@ -170,7 +170,7 @@ export default {
           }
         ]
       },
-      seriesData:null
+      seriesData:[[],[],[],[],[]]
     };
   },
   created() {
@@ -252,9 +252,9 @@ export default {
           return item.value
         })
         this.setOption.series.forEach((item,index,arr)=>{
-          
           arr[index].data = this.seriesData[index]
         })
+        console.log(this.seriesData)
       });
     },
     eightDayData(){

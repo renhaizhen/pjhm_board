@@ -19,7 +19,8 @@ var sqlMap = {
       leftHuoli:"select from_unixtime(UNIX_TIMESTAMP(time), '%Y-%m-%d %H'),FLOOR(AVG(`value`)) AS `value` from getui_heatmap_showsum where name = '活力森林区' group by  FLOOR(from_unixtime(UNIX_TIMESTAMP(time), '%H')/2)",
       leftLiujiu:"select from_unixtime(UNIX_TIMESTAMP(time), '%Y-%m-%d %H'),FLOOR(AVG(`value`)) AS `value` from getui_heatmap_showsum where name = '柳鹭田园区' group by  FLOOR(from_unixtime(UNIX_TIMESTAMP(time), '%H')/2)",
       leftBinjiang:"select from_unixtime(UNIX_TIMESTAMP(time), '%Y-%m-%d %H'),FLOOR(AVG(`value`)) AS `value` from getui_heatmap_showsum where name = '滨江漫步区' group by  FLOOR(from_unixtime(UNIX_TIMESTAMP(time), '%H')/2)",
-      leftSenlin:"select from_unixtime(UNIX_TIMESTAMP(time), '%Y-%m-%d %H'),FLOOR(AVG(`value`)) AS `value` from getui_heatmap_showsum where name = '森林游憩区' group by  FLOOR(from_unixtime(UNIX_TIMESTAMP(time), '%H')/2)"
+      leftSenlin:"select from_unixtime(UNIX_TIMESTAMP(time), '%Y-%m-%d %H'),FLOOR(AVG(`value`)) AS `value` from getui_heatmap_showsum where name = '森林游憩区' group by  FLOOR(from_unixtime(UNIX_TIMESTAMP(time), '%H')/2)",
+      heatMapData:"SELECT round(gcj02_lng,6) AS lng,round(gcj02_lat,6) AS lat, `value` AS count FROM getui_heatmap_show"
     },
 }
 
