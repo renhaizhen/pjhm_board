@@ -1,5 +1,4 @@
 <template>
-  <div class="borderBox">
     <div class="container" :style="url">
       <div class="left">
         <div class="leftTop">
@@ -27,7 +26,6 @@
         </div>
       </div>
     </div>
-  </div>
 </template>
 
 <script>

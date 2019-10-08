@@ -10,8 +10,8 @@ export default {
   name: "RightBottom",
   data() {
     return {
-      chartWidth: "1054px",
-      chartHeight: "207px",
+      chartWidth: "10.54rem",
+      chartHeight: "2.07rem",
       setOption: {
         backgroundColor: "#2d6d3e",
         grid: {

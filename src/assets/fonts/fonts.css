@@ -34,3 +34,9 @@
   font-weight: normal;  
   font-style: normal;  
 }
+@font-face {  
+  font-family: 'MONLight';  
+  src: url('./MONLight.otf');  
+  font-weight: normal;  
+  font-style: normal;  
+}

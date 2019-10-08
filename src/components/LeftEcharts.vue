@@ -46,8 +46,8 @@ export default {
   name: "LeftEcharts",
   data() {
     return {
-      chartWidth: "240px",
-      chartHeight: "240px",
+      chartWidth: "2.4rem",
+      chartHeight: "2.4rem",
       iconImg: {
         qiji: {
           backgroundImage: "url(" + require("../assets/qiji.png") + ")",
@@ -99,7 +99,9 @@ export default {
              interval:0,
             textStyle: {
               color: "#ffffff"
-            }
+            },
+            fontSize:12,
+            fontFamily:'MONLight'
           },
           splitLine: {
             show: false
@@ -124,7 +126,9 @@ export default {
           axisLabel: {
             textStyle: {
               color: "#ffffff"
-            }
+            },
+              fontSize:14,
+            fontFamily:'MONLight'
           },
           axisLine: {
             show: true,
@@ -541,21 +545,21 @@ export default {
 <style scoped>
 .text {
   display: inline-block;
-  width: 190px;
-  height: 69px;
+  width: 1.9rem;
+  height: .69rem;
   text-align: center;
-  line-height: 69px;
-  font-size: 24px;
+  line-height: .69rem;
+  font-size: .24rem;
   font-family: "SHSCNBold";
   background-color: #51a769;
-  border-radius: 30px;
-  margin-top: 32px;
-  margin-left: 55px;
+  border-radius: .30rem;
+  margin-top: .32rem;
+  margin-left: .55rem;
 }
 .chart {
   display: inline-block;
-  padding-left: 5px;
-  padding-top: 30px;
+  padding-left: .05rem;
+  padding-top: .30rem;
 }
 .mycharts {
   overflow: hidden;
@@ -563,40 +567,40 @@ export default {
 }
 .mycharts span {
   position: absolute;
-  width: 46px;
-  height: 30px;
-  font-size: 14px;
+  width: .46rem;
+  height: .30rem;
+  font-size: .14rem;
   font-family: 'SHSCNHeavy';
   color: #ffffff;
   text-align: center;
-  line-height: 37px;
+  line-height: .37rem;
 }
 .mycharts .iconqiji {
-  top: 38px;
-  left: 205px;
+  top: .38rem;
+  left: 2.05rem;
   color: #2d6d3f;
 }
 .iconhuoli {
-  top: 38px;
-  left: 453px;
+  top: .38rem;
+  left: 4.53rem;
 }
 .iconliujiu {
-  top: 38px;
-  left: 700px;
+  top: .38rem;
+  left: 7rem;
 }
 .iconbinjiang {
-  top: 310px;
-  left: 330px;
+  top: 3.10rem;
+  left: 3.30rem;
 }
 .iconsenlin {
-  top: 310px;
-  left: 583px;
+  top: 3.10rem;
+  left: 5.83rem;
 }
 .qiji{
-  margin-left: 15px;
+  margin-left: .15rem;
 }
 .binjiang {
-  margin-left: 140px;
-  margin-right: 5px;
+  margin-left: 1.40rem;
+  margin-right: .05rem;
 }
 </style>

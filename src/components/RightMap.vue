@@ -28,8 +28,8 @@
 </template>
 <style lang="css">
 .amap-wrapper {
-  width: 1139px;
-  height: 511px;
+  width: 11.39rem;
+  height: 5.11rem;
 }
 </style>
 
