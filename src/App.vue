@@ -14,15 +14,15 @@ export default {
     setHeight(){
       var ss;
 		// var w=window.screen.availWidth ;
-    var h=window.innerHeight;
+    var h=window.screen.availHeight;
     console.log(h,888)
 		ss=document.getElementById('app');
 		//alert(w);
 		// ss.style.width=w+"px";
-		ss.style.height=h+"px";
+		ss.style.height=((h+40)/100)+"rem";
 		// ss.style.width = h+"px";
-		document.getElementsByTagName("body")[0].style.height = h/100+"rem";
-    document.getElementsByTagName("html")[0].style.height = h/100+"rem";		
+		document.getElementsByTagName("body")[0].style.height = (h+40)/100+"rem";
+    document.getElementsByTagName("html")[0].style.height = (h+40)/100+"rem";		
     }
   },
 }
@@ -42,7 +42,7 @@ body{
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: white;
-  background-color: #2d6d3f;
+  /* background-color: #2d6d3f; */
 }
 .container{
   width: 100%;
@@ -79,9 +79,9 @@ body{
   height: 1.8rem;
 }
 .rightContent{
-  height: 5.13rem;
+  height: 5.11rem;
   width: 11.39rem;
-  /* border: 1px solid #ffffff; */
+  border: 1px solid #ffffff;
   margin-top: 0.03rem;
 }
 .rightBottomDes{
