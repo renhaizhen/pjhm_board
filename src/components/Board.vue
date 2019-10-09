@@ -1,5 +1,5 @@
 <template>
-    <div class="container" :style="url">
+    <div class="container" id="container" :style="url">
       <div class="left">
         <div class="leftTop">
           <Header/>

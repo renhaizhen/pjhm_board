@@ -55,34 +55,34 @@ export default {
 
 <style scoped>
 .data{
-  height: 1.77rem;
+  height: 177px;
 }
 .data span{
   display: inline-block;
-  border-radius: .6rem;
-  font-size: .45rem;
+  border-radius: 60px;
+  font-size: 45px;
   text-align: center;
-  height: 1.17rem;
-  font-size: .6rem;
-  line-height: 1.17rem;
-  margin-top: .31rem;
+  height: 117px;
+  font-size: 60px;
+  line-height: 117px;
+  margin-top: 31px;
 }
 .week{
   background-color: #2B9B58 ;
-  width: 1.83rem;
+  width: 183px;
   font-family: 'SHSCNMidium';
-  margin-left: .50rem;
+  margin-left: 50px;
 }
 .date{
   background-color: #a0bd44;
-  width: 2.16rem;
+  width: 216px;
   font-family: 'SHSCNMidium';
-  margin: 0 .30rem;
+  margin: 0 30px;
 
 }
 .time{
   background-color: #83c3cc;
-  width: 2.03rem;
+  width: 203px;
   font-family: 'SHSCNMidium';
 }
 

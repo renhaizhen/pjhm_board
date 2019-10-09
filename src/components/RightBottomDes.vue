@@ -28,43 +28,43 @@ export default {
   overflow: hidden;
 }
 .desLeft {
-  width: 2.42rem;
-  height: 1.11rem;
+  width: 242px;
+  height: 111px;
   float: left;
 }
 .desLeft span {
-  font-size: .24rem;
+  font-size: 24px;
   display: inline-block;
   background-color: #51a769;
-  width: 2.42rem;
-  height: .69rem;
-  border-radius: .345rem;
+  width: 242px;
+  height: 69px;
+  border-radius: 34.5px;
   font-family: "SHSCNBold";
   text-align: center;
-  line-height: .69rem;
-  margin-top: .33rem;
-  margin-left: .10rem;
+  line-height: 69px;
+  margin-top: 33px;
+  margin-left: 10px;
 }
 .desRight {
   float: right;
-  height: 1.30rem;
-  width: 6.40rem;
-  margin-top: .30rem;
+  height: 130px;
+  width: 640px;
+  margin-top: 30px;
 }
 .desRight span {
-  font-size: .20rem;
+  font-size: 20px;
   font-family: "SHSCNMidium";
-  width: 2rem;
-  height: .36rem;
+  width: 200px;
+  height: 36px;
   display: inline-block;
   position: relative;
 }
 .desRight span i {
   position: absolute;
-  right: 2.25rem;
-  top: -0.01rem;
-  width: .25rem;
-  height: .25rem;
+  right: 225px;
+  top: -1px;
+  width: 25px;
+  height: 25px;
   border-radius: 50%;
 }
 .qiji{

@@ -46,8 +46,8 @@ export default {
   name: "LeftEcharts",
   data() {
     return {
-      chartWidth: "2.4rem",
-      chartHeight: "2.4rem",
+      chartWidth: "240px",
+      chartHeight: "240px",
       iconImg: {
         qiji: {
           backgroundImage: "url(" + require("../assets/qiji.png") + ")",
@@ -545,21 +545,21 @@ export default {
 <style scoped>
 .text {
   display: inline-block;
-  width: 1.9rem;
-  height: .69rem;
+  width: 190px;
+  height: 69px;
   text-align: center;
-  line-height: .69rem;
-  font-size: .24rem;
+  line-height: 69px;
+  font-size: 24px;
   font-family: "SHSCNBold";
   background-color: #51a769;
-  border-radius: .30rem;
-  margin-top: .32rem;
-  margin-left: .55rem;
+  border-radius: 30px;
+  margin-top: 32px;
+  margin-left: 55px;
 }
 .chart {
   display: inline-block;
-  padding-left: .05rem;
-  padding-top: .30rem;
+  padding-left: 5px;
+  padding-top: 30px;
 }
 .mycharts {
   overflow: hidden;
@@ -567,40 +567,40 @@ export default {
 }
 .mycharts span {
   position: absolute;
-  width: .46rem;
-  height: .30rem;
-  font-size: .14rem;
+  width: 46px;
+  height: 30px;
+  font-size: 14px;
   font-family: 'SHSCNHeavy';
   color: #ffffff;
   text-align: center;
-  line-height: .37rem;
+  line-height: 37px;
 }
 .mycharts .iconqiji {
-  top: .38rem;
-  left: 2.05rem;
+  top: 38px;
+  left: 205px;
   color: #2d6d3f;
 }
 .iconhuoli {
-  top: .38rem;
-  left: 4.53rem;
+  top: 38px;
+  left: 453px;
 }
 .iconliujiu {
-  top: .38rem;
-  left: 7rem;
+  top: 38px;
+  left: 700px;
 }
 .iconbinjiang {
-  top: 3.10rem;
-  left: 3.30rem;
+  top: 310px;
+  left: 330px;
 }
 .iconsenlin {
-  top: 3.10rem;
-  left: 5.83rem;
+  top: 310px;
+  left: 583px;
 }
 .qiji{
-  margin-left: .15rem;
+  margin-left: 15px;
 }
 .binjiang {
-  margin-left: 1.40rem;
-  margin-right: .05rem;
+  margin-left: 140px;
+  margin-right: 5px;
 }
 </style>

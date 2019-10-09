@@ -10,7 +10,7 @@ import echarts from 'echarts'
 import VueAMap from 'vue-amap'
 import './assets/fonts/fonts.css'
 import './assets/fonts/reset.css'
-import './assets/fonts/rem.js'
+// import './assets/fonts/rem.js'
 Vue.use(VueAMap)
 Vue.prototype.$echarts = echarts
 Vue.config.productionTip = false

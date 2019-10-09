@@ -27,12 +27,12 @@ export default {
 .text span {
     float: right;
     display: inline-block;
-    font-size: .60rem;
+    font-size: 60px;
     font-family: 'SHSCNBold';
-    margin-top: .61rem;
+    margin-top: 61px;
     text-align: center;
-    width: 7.2rem;
-    margin-right: 1.76rem;
+    width: 720px;
+    margin-right: 176px;
     color: #ffffff;
 }
 </style>

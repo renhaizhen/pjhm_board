@@ -55,11 +55,12 @@ export default {
 </script>
 <style scoped>
 body{
-  background-color: #2d7140;
+  background-color: #2d6d3f;
 }
 .log_Box {
   margin-top: 210px;
   margin-bottom: 80px;
+  background-color: #2d6d3f;
 }
 .form{
   max-width: 380px;

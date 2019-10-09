@@ -24,24 +24,24 @@ watch: {
 </script>
 <style scoped>
 .bottomText {
-  width: 4.09rem;
-  height: 2rem;
+  width: 409px;
+  height: 200px;
   position: absolute;
   color: #ffffff;
   text-align: center;
-  right: 1.45rem;
-  bottom: -0.5rem;
+  right: 145px;
+  bottom: -50px;
 }
 .bottomText span {
   display: block;
 }
 .bottomText .text {
-  font-size: .24rem;
+  font-size: 24px;
   font-family: "SHSCNHeavy";
-  line-height: .60rem;
+  line-height: 60px;
 }
 .bottomText .count {
-  font-size: .68rem;
+  font-size: 68px;
   font-family: "SHSCNHeavy";
 }
 </style>
