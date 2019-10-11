@@ -216,8 +216,8 @@ export default {
           strokeWeight: 2, 
           strokeColor: "#19A4EB", 
           strokeOpacity: 0.8, 
-          fillColor: "green", 
-          fillOpacity:0.1,
+          fillColor: "#007115", 
+          fillOpacity:0.3,
           draggable: false,
     });
     map.add(polygon);

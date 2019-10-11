@@ -12,18 +12,22 @@ module.exports = {
     assetsPublicPath: '/',
     proxyTable: {
       '/api': {
-        //本地
-        target: 'http://127.0.0.1:3000/api/', 
-        // target: 'http://49.235.95.225:3000/api/',
+        //线上
+        // target: 'http://49.235.95.255:3000/api', 
+        target: 'http://127.0.0.1:3000/api/',
+
         pathRewrite: {
-          '^/api': '/'
+          '^/api':  '/',
+          //线上
+          // '^/api':  'http://49.235.95.255:3000/api', 
+
         }
       }
     },
 
     // Various Dev Server settings
     host: 'localhost', // can be overwritten by process.env.HOST
-    port: 8080, // can be overwritten by process.env.PORT, if port is in use, a free one will be determined
+    port: 3000, // can be overwritten by process.env.PORT, if port is in use, a free one will be determined
     autoOpenBrowser: false,
     errorOverlay: true,
     notifyOnErrors: true,

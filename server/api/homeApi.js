@@ -211,5 +211,20 @@ router.post('/heatMapData', (req, res) => {
   })
 })
 
+// 拉取各个园区的开闭园时间
+router.post('/timeTable', (req, res) => {
+  var sql = $sql.data.timeTable
+  // var params = req.body
+  // console.log(params)
+  conn.query(sql, function (err, result) {
+    if (err) {
+      console.log(err)
+    }
+    if (result) {
+      jsonWrite(res, result)
+      console.log(result)
+    }
+  })
+})
 
   module.exports = router

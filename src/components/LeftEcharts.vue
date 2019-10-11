@@ -160,6 +160,13 @@ export default {
       binjiangData:[],
       senlinData:[],
       currentAllPeople:2500,
+      timeTableData:{
+        qijiTime:[],
+        huoliTime:[],
+        liujiuTime:[],
+        binjiangTime:[],
+        senlinTime:[]
+      }
     };
   },
    watch: {
@@ -242,6 +249,7 @@ export default {
     }
   },
   created() {
+    this.timeTable()
     this.showData()
   },
   mounted() {
@@ -254,7 +262,46 @@ export default {
     this.yanTime()
   },
   methods: {
-        //获取数据
+    //获取各个园区的开园时间 这里集中处理横轴时间问题
+    timeTable(){
+      this.$http.post("/api/home/timeTable").then(data => {
+        console.log(data.body)
+        data.body.map(item=>{
+          if(item.quyu=='奇迹花园区'){          
+            let startTime = Number(item.open_time.substring(0,2))
+            let endTime = Number(item.close_time.substring(0,2))
+            for(let i=startTime;i<=endTime;i++){
+              this.timeTableData.qijiTime.push(i+'时')
+            }
+          }else if(item.quyu=='活力森林区'){
+             let startTime = Number(item.open_time.substring(0,2))
+            let endTime = Number(item.close_time.substring(0,2))
+              for(let i=startTime;i<=endTime;i++){
+              this.timeTableData.huoliTime.push(i+'时')
+            }
+          }else if(item.quyu=='柳鹭田园区'){
+              let startTime = Number(item.open_time.substring(0,2))
+            let endTime = Number(item.close_time.substring(0,2))
+              for(let i=startTime;i<=endTime;i++){
+              this.timeTableData.liujiuTime.push(i+'时')
+            }
+          }else if(item.quyu=='滨江漫步区'){
+             let startTime = Number(item.open_time.substring(0,2))
+            let endTime = Number(item.close_time.substring(0,2))
+              for(let i=startTime;i<=endTime;i++){
+              this.timeTableData.binjiangTime.push(i+'时')
+            }
+          }else if(item.quyu=='森林游憩区'){
+             let startTime = Number(item.open_time.substring(0,2))
+            let endTime = Number(item.close_time.substring(0,2))
+              for(let i=startTime;i<=endTime;i++){
+              this.timeTableData.senlinTime.push(i+'时')
+            }
+          }
+        })
+      });
+    },
+    //获取数据
     showData(){
        //获取当前时间
         var newDate = new Date();
@@ -264,66 +311,108 @@ export default {
         var qiji = data.body.map(item=>{
           return item.value
         })
-        if(hours>=12){
-          var b = qiji.splice(0,5)
-          this.options.xAxis.data= ["", "12时", "14时","16时","18时","实时"]
-          this.qijiData = qiji
-        }else{
-          this.qijiData = qiji
+        if(hours<10){
+          var b = qiji.slice(5,11)
+          this.options.xAxis.data= this.timeTableData.qijiTime.slice(0,6)
+          this.qijiData = b
+         this.countPeople.qiji = b[b.length-1]
+        } if(10<hours<16){
+          var b = qiji.slice(11,17)
+          this.options.xAxis.data= this.timeTableData.qijiTime.slice(6,12)
+          this.qijiData = b
+         this.countPeople.qiji = b[b.length-1]
+        } if(hours>=16){
+          var b = qiji.slice(17,22)
+          this.options.xAxis.data= this.timeTableData.qijiTime.slice(12,17)
+          this.qijiData = b
+         this.countPeople.qiji = b[b.length-1]
         }
-        this.countPeople.qiji = qiji[qiji.length-1]
       });
       this.$http.post("/api/home/leftHuoli").then(data => {
         var huoli = data.body.map(item=>{
           return item.value
         })
-         if(hours>=12){
-          var b = huoli.splice(0,5)
-          this.options.xAxis.data= ["", "12时", "14时","16时","18时","实时"]
-          this.huoliData = huoli
-        }else{
-        this.huoliData = huoli
+         if(hours<10){
+          var b = huoli.slice(5,11)
+          this.options.xAxis.data= this.timeTableData.huoliTime.slice(0,6)
+          this.huoliData = b
+         this.countPeople.huoli = b[b.length-1]
+        } if(10<hours<16){
+          var b = huoli.slice(11,17)
+          this.options.xAxis.data= this.timeTableData.huoliTime.slice(6,12)
+          this.huoliData = b
+         this.countPeople.huoli = b[b.length-1]
+        } if(hours>=16){
+          var b = huoli.slice(17,22)
+          this.options.xAxis.data= this.timeTableData.huoliTime.slice(12,17)
+          this.huoliData = b
+         this.countPeople.huoli = b[b.length-1]
         }
-        this.countPeople.huoli = huoli[huoli.length-1]
       });
       this.$http.post("/api/home/leftLiujiu").then(data => {
         var liujiu = data.body.map(item=>{
           return item.value
         })
-        if(hours>=12){
-          var b = liujiu.splice(0,5)
-          this.options.xAxis.data= ["", "12时", "14时","16时","18时","实时"]
-          this.liujiuData = liujiu
-        }else{
-        this.liujiuData = liujiu
+        console.log(this.timeTableData.liujiuTime)
+        if(hours<10){
+          var b = liujiu.slice(5,11)
+          this.options.xAxis.data= this.timeTableData.liujiuTime.slice(0,6)
+          this.liujiuData = b
+         this.countPeople.liujiu = b[b.length-1]
+        } if(10<hours<16){
+          var b = liujiu.slice(11,17)
+          this.options.xAxis.data= this.timeTableData.liujiuTime.slice(6,12)
+          this.liujiuData = b
+         this.countPeople.liujiu = b[b.length-1]
+        } if(hours>=16){
+          var b = liujiu.slice(14,19)
+          this.options.xAxis.data= this.timeTableData.liujiuTime.slice(9,14)
+          this.liujiuData = b
+         this.countPeople.liujiu = b[b.length-1]
         }
-        this.countPeople.liujiu = liujiu[liujiu.length-1]
       });
       this.$http.post("/api/home/leftBinjiang").then(data => {
         var binjiang = data.body.map(item=>{
           return item.value
         })
-        if(hours>=12){
-          var b = binjiang.splice(0,5)
-          this.options.xAxis.data= ["", "12时", "14时","16时","18时","实时"]
-          this.binjiangData = binjiang
-        }else{
-        this.binjiangData = binjiang
+        if(hours<10){
+          var b = binjiang.slice(5,11)
+          this.options.xAxis.data= this.timeTableData.binjiangTime.slice(0,6)
+          this.binjiangData = b
+         this.countPeople.binjiang = b[b.length-1]
+        } if(10<hours<16){
+          var b = binjiang.slice(11,17)
+          this.options.xAxis.data= this.timeTableData.binjiangTime.slice(6,12)
+          this.binjiangData = b
+         this.countPeople.binjiang = b[b.length-1]
+        } if(hours>=16){
+          var b = binjiang.slice(17,22)
+          this.options.xAxis.data= this.timeTableData.binjiangTime.slice(12,17)
+          this.binjiangData = b
+          console.log(b,777777)
+         this.countPeople.binjiang = b[b.length-1]
         }
-        this.countPeople.binjiang = binjiang[binjiang.length-1]
       });
       this.$http.post("/api/home/leftSenlin").then(data => {
         var senlin = data.body.map(item=>{
           return item.value
         })
-        if(hours>=12){
-          var b = senlin.splice(0,5)
-          this.options.xAxis.data= ["", "12时", "14时","16时","18时","实时"]
-          this.senlinData = senlin
-        }else{
-        this.senlinData = senlin
+        if(hours<10){
+          var b = senlin.slice(5,11)
+          this.options.xAxis.data= this.timeTableData.senlinTime.slice(0,6)
+          this.senlinData = b
+         this.countPeople.senlin = b[b.length-1]
+        } if(10<hours<16){
+          var b = senlin.slice(11,17)
+          this.options.xAxis.data= this.timeTableData.senlinTime.slice(6,12)
+          this.senlinData = b
+         this.countPeople.binjiang = b[b.length-1]
+        } if(hours>=16){
+          var b = senlin.slice(17,22)
+          this.options.xAxis.data= this.timeTableData.senlinTime.slice(12,17)
+          this.senlinData = b
+         this.countPeople.senlin = b[b.length-1]
         }
-        this.countPeople.senlin = senlin[senlin.length-1]
       });
     },
     drawChartQiji() {
@@ -451,7 +540,30 @@ export default {
           }
         },
         xAxis: this.options.xAxis,
-        yAxis: this.options.yAxis,
+        yAxis: {
+          type: "value",
+          minInterval: 0,
+          interval: 500,
+          max: 2500,
+          splitLine: {
+            show: false
+          },
+          axisLabel: {
+            textStyle: {
+              color: "#ffffff"
+            },
+              fontSize:12,
+            fontFamily:'MONLight'
+          },
+          axisLine: {
+            show: true,
+            lineStyle: {
+              color: "rgba(219,225,255,.5)",
+              width: 1,
+              type: "solid"
+            }
+          }
+        },
         series: [
           {
             symbol: "none", //拐点样式
@@ -513,6 +625,9 @@ export default {
     },
     //计算当前在园总人数
     currentPeople(){
+      if(this.binjiangData){
+      this.countPeople.binjiang = this.binjiangData[this.binjiangData.length-1]
+      }
       this.currentAllPeople = this.countPeople.qiji+this.countPeople.huoli+this.countPeople.liujiu+this.countPeople.binjiang+this.countPeople.senlin
       console.log(this.currentAllPeople,'当前在园总人数')
       this.$store.state.count = this.currentAllPeople
@@ -558,6 +673,7 @@ export default {
 }
 .chart {
   display: inline-block;
+  box-sizing: border-box;
   padding-left: 5px;
   padding-top: 30px;
 }

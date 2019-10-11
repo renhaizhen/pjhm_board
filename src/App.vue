@@ -38,6 +38,7 @@ export default {
       const clientHeight = global.offsetHeight;
       const innerWidth = main.offsetWidth;
       const innerHeight = main.offsetHeight;
+      console.log(clientWidth,clientHeight,innerWidth,innerHeight)
       let r = 1;
       let translate;
       if (clientWidth / clientHeight > innerWidth / innerHeight){//内部元素太长
