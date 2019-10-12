@@ -101,7 +101,7 @@ export default {
           {
             name: "奇迹花园区",
             type: "bar",
-            data: [3342, 2644, 3101, 3968, 1537, 1681, 1994],
+            data: [],
             barWidth:15,
             barGap: 0, //柱间距离
             itemStyle: {
@@ -115,7 +115,7 @@ export default {
           {
             name: "柳鹫田园区",
             type: "bar",
-            data: [354, 40, 636, 214, 3099, 57, 73],
+            data: [],
             barWidth: 15,
             barGap: 0, //柱间距离
             itemStyle: {
@@ -129,7 +129,7 @@ export default {
           {
             name: "森林游憩区",
             type: "bar",
-            data: [207, 195, 195, 195, 134, 219, 244],
+            data: [],
             barWidth: 15,
             barGap: 0.2, //柱间距离
             itemStyle: {
@@ -143,7 +143,7 @@ export default {
           {
             name: "活力森林区",
             type: "bar",
-            data: [254, 331, 246, 292, 200, 238, 223],
+            data: [],
             barWidth: 15,
             barGap: 0, //柱间距离
             itemStyle: {
@@ -157,7 +157,7 @@ export default {
           {
             name: "滨江漫步区",
             type: "bar",
-            data: [1708, 1823, 1665, 1738, 1567, 1360, 1549],
+            data: [],
             barWidth: 15,
             barGap: 0, //柱间距离
             itemStyle: {
@@ -215,6 +215,10 @@ export default {
     },
     //获取近8天的所有历史数据
     getAllDayData() {
+         //先设置
+      this.seriesData = this.setOption.series.map((item,index)=>{
+          return item.data
+        })
       this.$http.post("/api/home/rightQiji").then(data => {
         //提取出x轴的日期
         this.setOption.xAxis[0].data = data.body.map((item, index) => {
@@ -223,38 +227,47 @@ export default {
             .split(" ")[0]
             .replace("-", "/");
         });
-        // console.log(this.setOption.series[0].data, "before");
-        this.setOption.series[0].data = data.body.map(item => {
+        //奇迹数据设置
+        this.seriesData[0]= data.body.map(item => {
           return item.value;
         });
-        this.seriesData = this.setOption.series.map((item,index)=>{
-          return item.data
+         this.setOption.series.forEach((item,index,arr)=>{
+          arr[index].data = this.seriesData[index]
         })
       });
       this.$http.post("/api/home/rightLiujiu").then(data => {
         this.seriesData[1] = data.body.map(item=>{
           return item.value
+        })       
+         this.setOption.series.forEach((item,index,arr)=>{
+          arr[index].data = this.seriesData[index]
         })
-        
       });
       this.$http.post("/api/home/rightSenlin").then(data => {
         this.seriesData[2] = data.body.map(item=>{
           return item.value
+        })
+         this.setOption.series.forEach((item,index,arr)=>{
+          arr[index].data = this.seriesData[index]
         })
       });
       this.$http.post("/api/home/rightHuoli").then(data => {
         this.seriesData[3] = data.body.map(item=>{
           return item.value
         })
+         this.setOption.series.forEach((item,index,arr)=>{
+          arr[index].data = this.seriesData[index]
+        })
       });
       this.$http.post("/api/home/rightBinjiang").then(data => {
+        console.log(data.body,'body')
         this.seriesData[4] = data.body.map(item=>{
           return item.value
         })
         this.setOption.series.forEach((item,index,arr)=>{
           arr[index].data = this.seriesData[index]
         })
-        console.log(this.seriesData,'右侧数据')
+        console.log(this.seriesData,this.setOption.series,'右侧数据')
       });
     },
     eightDayData(){
@@ -262,13 +275,14 @@ export default {
         //10:10请求数据更新当日数据
         var newDate = new Date();
         var hours = newDate.getHours();
-        var minutes = newDate.getMinutes();
+        var minutes = Number(newDate.getMinutes());
         hours = hours < 10 ? "0" + hours : hours;
-        minutes = minutes < 10 ? "0" + minutes : minutes;
+        // minutes = minutes < 10 ? "0" + minutes : minutes;
+        console.log(hours,minutes)
         if(hours==10&&minutes==10){
           this.getAllDayData()
         }
-      }, 1000);
+      }, 20000);
     }
   }
 };
