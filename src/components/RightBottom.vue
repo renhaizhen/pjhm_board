@@ -254,7 +254,7 @@ export default {
         this.setOption.series.forEach((item,index,arr)=>{
           arr[index].data = this.seriesData[index]
         })
-        console.log(this.seriesData)
+        console.log(this.seriesData,'右侧数据')
       });
     },
     eightDayData(){

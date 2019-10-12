@@ -21,6 +21,9 @@ export default {
     }
   },
   mounted() {
+    setTimeout(this.resize.bind(this), 100)
+    setTimeout(this.resize.bind(this), 1000)
+    // this.resize();
      const that = this
         window.onresize = () => {
             return (() => {
@@ -33,17 +36,23 @@ export default {
     //进行resize
     resize(){
       const global = document.getElementById(`app`);
+      if(global) {
+        console.log(window.innerHeight, `window.innerHeight...`);
+        global.style.maxHeight = window.innerHeight + `px`;
+        global.style.height = window.innerHeight + `px`;
+      }
+      // console.log(global.style.maxHeight, `window.screenHeightwindow.screenHeight`);
       const main = document.getElementById(`container`);
-      const clientWidth = global.offsetWidth;
-      const clientHeight = global.offsetHeight;
+      const clientWidth = window.innerWidth;
+      const clientHeight = window.innerHeight;
       const innerWidth = main.offsetWidth;
       const innerHeight = main.offsetHeight;
-      console.log(clientWidth,clientHeight,innerWidth,innerHeight)
+      // console.log(global, main, clientWidth,clientHeight,innerWidth,innerHeight, `innerHeight...`)
       let r = 1;
       let translate;
       if (clientWidth / clientHeight > innerWidth / innerHeight){//内部元素太长
         r = clientHeight / innerHeight   //缩放比例
-        translate = `translateX()`//这个反正遇不到，高 > 宽
+        translate = `translateX(${Math.floor((clientWidth - innerWidth * r)/2)}px)`//这个反正遇不到，高 > 宽
       }else {
         r = clientWidth / innerWidth   //缩放比例
         translate = `translateY(${Math.floor((clientHeight - innerHeight * r)/2)}px)`
@@ -62,8 +71,13 @@ export default {
 }
 body{
   background-color: #2d6d3f;
+  overflow: hidden;
+  position: absolute;
+  width: 100%;
+  height: 100%;
 }
 #app {
+  position: absolute;
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -71,6 +85,8 @@ body{
   background-color: #2d6d3f;
   width: 100%;
   height: 100%;
+  max-height:  100%;
+  overflow: hidden;
 }
 .container{
   width: 1920px;

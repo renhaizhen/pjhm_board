@@ -127,7 +127,7 @@ export default {
             textStyle: {
               color: "#ffffff"
             },
-              fontSize:14,
+            fontSize:14,
             fontFamily:'MONLight'
           },
           axisLine: {
@@ -166,6 +166,18 @@ export default {
         liujiuTime:[],
         binjiangTime:[],
         senlinTime:[]
+      },
+      yTableData:{
+        qiji:500,
+        qijiInterval:100,
+        huoli:500,
+        huoliInterval:100,
+        liujiu:500,
+        liujiuInterval:100,
+        binjiang:2500,
+        binjiangInterval:100,
+        senlin:500,
+        senlinInterval:100
       }
     };
   },
@@ -306,22 +318,26 @@ export default {
        //获取当前时间
         var newDate = new Date();
         var hours = newDate.getHours();
-        hours = hours < 10 ? "0" + hours : hours;
+        // hours = hours < 10 ? "0" + hours : hours;
        this.$http.post("/api/home/leftQiji").then(data => {
         var qiji = data.body.map(item=>{
           return item.value
         })
-        if(hours<10){
+        let yValue = Math.max(...qiji)
+        this.yTableData.qiji = yValue
+        this.yTableData.qijiInterval = Math.ceil(yValue/4)
+        console.log(qiji,'奇迹数据',this.yTableData)
+        if(hours<=10&&hours>=5){
           var b = qiji.slice(5,11)
           this.options.xAxis.data= this.timeTableData.qijiTime.slice(0,6)
           this.qijiData = b
          this.countPeople.qiji = b[b.length-1]
-        } if(10<hours<16){
+        }else if(hours>=11&&hours<=16){
           var b = qiji.slice(11,17)
           this.options.xAxis.data= this.timeTableData.qijiTime.slice(6,12)
           this.qijiData = b
          this.countPeople.qiji = b[b.length-1]
-        } if(hours>=16){
+        }else if((hours>=17&&hours<=23)||(hours>=0&&hours<5)){
           var b = qiji.slice(17,22)
           this.options.xAxis.data= this.timeTableData.qijiTime.slice(12,17)
           this.qijiData = b
@@ -332,17 +348,21 @@ export default {
         var huoli = data.body.map(item=>{
           return item.value
         })
-         if(hours<10){
+        let yValue = Math.max(...huoli)
+        this.yTableData.huoli = yValue
+        this.yTableData.huoliInterval = Math.ceil(yValue/4)
+        console.log(huoli,'活力数据',this.yTableData)
+         if(hours<=10&&hours>=5){
           var b = huoli.slice(5,11)
           this.options.xAxis.data= this.timeTableData.huoliTime.slice(0,6)
           this.huoliData = b
          this.countPeople.huoli = b[b.length-1]
-        } if(10<hours<16){
+        }else if(hours>=11&&hours<=16){
           var b = huoli.slice(11,17)
           this.options.xAxis.data= this.timeTableData.huoliTime.slice(6,12)
           this.huoliData = b
          this.countPeople.huoli = b[b.length-1]
-        } if(hours>=16){
+        }else if((hours>=17&&hours<=23)||(hours>=0&&hours<5)){
           var b = huoli.slice(17,22)
           this.options.xAxis.data= this.timeTableData.huoliTime.slice(12,17)
           this.huoliData = b
@@ -353,18 +373,21 @@ export default {
         var liujiu = data.body.map(item=>{
           return item.value
         })
-        console.log(this.timeTableData.liujiuTime)
-        if(hours<10){
+         let yValue = Math.max(...liujiu)
+        this.yTableData.liujiu = yValue
+        this.yTableData.liujiuInterval = Math.ceil(yValue/4)
+        console.log(liujiu,'柳鹫数据',this.yTableData)
+        if(hours<=10&&hours>=5){
           var b = liujiu.slice(5,11)
           this.options.xAxis.data= this.timeTableData.liujiuTime.slice(0,6)
           this.liujiuData = b
          this.countPeople.liujiu = b[b.length-1]
-        } if(10<hours<16){
+        }else if(hours>=11&&hours<=16){
           var b = liujiu.slice(11,17)
           this.options.xAxis.data= this.timeTableData.liujiuTime.slice(6,12)
           this.liujiuData = b
          this.countPeople.liujiu = b[b.length-1]
-        } if(hours>=16){
+        }else if((hours>=17&&hours<=23)||(hours>=0&&hours<5)){
           var b = liujiu.slice(14,19)
           this.options.xAxis.data= this.timeTableData.liujiuTime.slice(9,14)
           this.liujiuData = b
@@ -375,21 +398,24 @@ export default {
         var binjiang = data.body.map(item=>{
           return item.value
         })
-        if(hours<10){
+         let yValue = Math.max(...binjiang)
+        this.yTableData.binjiang = yValue
+        this.yTableData.binjiangInterval = Math.ceil(yValue/4)
+        console.log(binjiang,'滨江数据',this.yTableData)
+        if(hours<=10&&hours>=5){
           var b = binjiang.slice(5,11)
           this.options.xAxis.data= this.timeTableData.binjiangTime.slice(0,6)
           this.binjiangData = b
          this.countPeople.binjiang = b[b.length-1]
-        } if(10<hours<16){
+        }else if(hours>=11&&hours<=16){
           var b = binjiang.slice(11,17)
           this.options.xAxis.data= this.timeTableData.binjiangTime.slice(6,12)
           this.binjiangData = b
          this.countPeople.binjiang = b[b.length-1]
-        } if(hours>=16){
+        }else if((hours>=17&&hours<=23)||(hours>=0&&hours<5)){
           var b = binjiang.slice(17,22)
           this.options.xAxis.data= this.timeTableData.binjiangTime.slice(12,17)
           this.binjiangData = b
-          console.log(b,777777)
          this.countPeople.binjiang = b[b.length-1]
         }
       });
@@ -397,17 +423,21 @@ export default {
         var senlin = data.body.map(item=>{
           return item.value
         })
-        if(hours<10){
+         let yValue = Math.max(...senlin)
+        this.yTableData.senlin = yValue
+        this.yTableData.senlinInterval = Math.ceil(yValue/4)
+        console.log(senlin,'森林数据',this.yTableData)
+        if(hours<=10&&hours>=5){
           var b = senlin.slice(5,11)
           this.options.xAxis.data= this.timeTableData.senlinTime.slice(0,6)
           this.senlinData = b
          this.countPeople.senlin = b[b.length-1]
-        } if(10<hours<16){
+        }else if(hours>=11&&hours<=16){
           var b = senlin.slice(11,17)
           this.options.xAxis.data= this.timeTableData.senlinTime.slice(6,12)
           this.senlinData = b
-         this.countPeople.binjiang = b[b.length-1]
-        } if(hours>=16){
+         this.countPeople.senlin = b[b.length-1]
+        }else if((hours>=17&&hours<=23)||(hours>=0&&hours<5)){
           var b = senlin.slice(17,22)
           this.options.xAxis.data= this.timeTableData.senlinTime.slice(12,17)
           this.senlinData = b
@@ -417,6 +447,8 @@ export default {
     },
     drawChartQiji() {
       let qijiChart = echarts.init(this.$refs.qiji);
+      this.options.yAxis.max=this.yTableData.qiji
+      this.options.yAxis.interval = this.yTableData.qijiInterval
       qijiChart.setOption({
         grid: this.options.grid,
         title: {
@@ -454,6 +486,8 @@ export default {
     },
     drawChartHuoli() {
       let Chart = echarts.init(this.$refs.huoli);
+       this.options.yAxis.max=this.yTableData.huoli
+      this.options.yAxis.interval = this.yTableData.huoliInterval
       Chart.setOption({
         grid: this.options.grid,
         title: {
@@ -491,6 +525,8 @@ export default {
     },
     drawChartLiujiu() {
       let liujiuChart = echarts.init(this.$refs.liujiu);
+       this.options.yAxis.max=this.yTableData.liujiu
+      this.options.yAxis.interval = this.yTableData.liujiuInterval
       liujiuChart.setOption({
         grid: this.options.grid,
         title: {
@@ -543,8 +579,8 @@ export default {
         yAxis: {
           type: "value",
           minInterval: 0,
-          interval: 500,
-          max: 2500,
+          interval: this.yTableData.binjiangInterval,
+          max: this.yTableData.binjiang,
           splitLine: {
             show: false
           },
@@ -552,7 +588,7 @@ export default {
             textStyle: {
               color: "#ffffff"
             },
-              fontSize:12,
+            fontSize:12,
             fontFamily:'MONLight'
           },
           axisLine: {
@@ -588,6 +624,8 @@ export default {
     },
     drawChartSenlin() {
       let senlinChart = echarts.init(this.$refs.senlin);
+       this.options.yAxis.max=this.yTableData.senlin
+      this.options.yAxis.interval = this.yTableData.senlinInterval
       senlinChart.setOption({
         grid: this.options.grid,
         title: {
@@ -629,9 +667,9 @@ export default {
       this.countPeople.binjiang = this.binjiangData[this.binjiangData.length-1]
       }
       this.currentAllPeople = this.countPeople.qiji+this.countPeople.huoli+this.countPeople.liujiu+this.countPeople.binjiang+this.countPeople.senlin
-      console.log(this.currentAllPeople,'当前在园总人数')
+      // console.log(this.currentAllPeople,'当前在园总人数')
       this.$store.state.count = this.currentAllPeople
-      console.log(this.$store.state.count)
+      // console.log(this.$store.state.count)
     },
     //延时执行测试
     yanTime(){
@@ -640,19 +678,14 @@ export default {
         var hours = newDate.getHours();
         var minutes = newDate.getMinutes();
         hours = hours < 10 ? "0" + hours : hours;
-        minutes = minutes < 10 ? "0" + minutes : minutes;
-        //这里暂时定为20s请求一次数据
-        if(hours%2==0 && 7<Number(minutes)<45){
+        console.log(minutes)
+        //这里暂时定为30s请求一次数据
+        if(hours&&minutes==11){
           this.showData()
-          console.log('我请求了一次数据')
+          console.log('请求了一次数据')
         }
-      }, 1000000);
+      }, 30000);
     },
-    // yanTimes(){
-    //   setInterval(() => {
-    //     this.showData()
-    //   }, 100000);
-    // },
   }
 };
 </script>
