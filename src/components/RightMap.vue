@@ -139,7 +139,7 @@ export default {
   methods: {
     getMapData(){
        this.$http.post("/api/home/heatMapData").then(data => {
-        console.log(data)
+        // console.log(data)
         this.mapData = data.body
       });
     },

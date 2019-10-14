@@ -277,7 +277,6 @@ export default {
     //获取各个园区的开园时间 这里集中处理横轴时间问题
     timeTable(){
       this.$http.post("/api/home/timeTable").then(data => {
-        console.log(data.body)
         data.body.map(item=>{
           if(item.quyu=='奇迹花园区'){          
             let startTime = Number(item.open_time.substring(0,2))
@@ -323,22 +322,28 @@ export default {
         var qiji = data.body.map(item=>{
           return item.value
         })
+        this.qijiData = qiji
         let yValue = Math.max(...qiji)
         this.yTableData.qiji = yValue
         this.yTableData.qijiInterval = Math.ceil(yValue/4)
-        console.log(qiji,'奇迹数据',this.yTableData)
+        // console.log(qiji,'奇迹数据',this.timeTableData)
         if(hours<=10&&hours>=5){
           var b = qiji.slice(5,11)
           this.options.xAxis.data= this.timeTableData.qijiTime.slice(0,6)
           this.qijiData = b
          this.countPeople.qiji = b[b.length-1]
-        }else if(hours>=11&&hours<=16){
-          var b = qiji.slice(11,17)
-          this.options.xAxis.data= this.timeTableData.qijiTime.slice(6,12)
+        }else if(hours>=11&&hours<=14){
+          var b = qiji.slice(9,15)
+          this.options.xAxis.data= this.timeTableData.qijiTime.slice(4,10)
           this.qijiData = b
          this.countPeople.qiji = b[b.length-1]
-        }else if((hours>=17&&hours<=23)||(hours>=0&&hours<5)){
-          var b = qiji.slice(17,22)
+        }else if((hours>=15&&hours<=18)){
+          var b = qiji.slice(13,19)
+          this.options.xAxis.data= this.timeTableData.qijiTime.slice(12,14)
+          this.qijiData = b
+         this.countPeople.qiji = b[b.length-1]
+        }else if((hours>=19&&hours<=23)||(hours>=0&&hours<5)){
+          var b = qiji.slice(15,22)
           this.options.xAxis.data= this.timeTableData.qijiTime.slice(12,17)
           this.qijiData = b
          this.countPeople.qiji = b[b.length-1]
@@ -348,21 +353,27 @@ export default {
         var huoli = data.body.map(item=>{
           return item.value
         })
+        this.huoliData = huoli
         let yValue = Math.max(...huoli)
         this.yTableData.huoli = yValue
         this.yTableData.huoliInterval = Math.ceil(yValue/4)
-        console.log(huoli,'活力数据',this.yTableData)
+        // console.log(huoli,'活力数据',this.yTableData)
          if(hours<=10&&hours>=5){
           var b = huoli.slice(5,11)
           this.options.xAxis.data= this.timeTableData.huoliTime.slice(0,6)
           this.huoliData = b
          this.countPeople.huoli = b[b.length-1]
-        }else if(hours>=11&&hours<=16){
-          var b = huoli.slice(11,17)
-          this.options.xAxis.data= this.timeTableData.huoliTime.slice(6,12)
+        }else if(hours>=11&&hours<=14){
+          var b = huoli.slice(9,15)
+          this.options.xAxis.data= this.timeTableData.huoliTime.slice(4,10)
           this.huoliData = b
          this.countPeople.huoli = b[b.length-1]
-        }else if((hours>=17&&hours<=23)||(hours>=0&&hours<5)){
+        }else if((hours>=15&&hours<=18)){
+          var b = huoli.slice(13,19)
+          this.options.xAxis.data= this.timeTableData.huoliTime.slice(8,14)
+          this.huoliData = b
+         this.countPeople.huoli = b[b.length-1]
+        }else if((hours>=19&&hours<=23)||(hours>=0&&hours<5)){
           var b = huoli.slice(17,22)
           this.options.xAxis.data= this.timeTableData.huoliTime.slice(12,17)
           this.huoliData = b
@@ -373,23 +384,24 @@ export default {
         var liujiu = data.body.map(item=>{
           return item.value
         })
+        this.liujiuData = liujiu
          let yValue = Math.max(...liujiu)
         this.yTableData.liujiu = yValue
         this.yTableData.liujiuInterval = Math.ceil(yValue/4)
-        console.log(liujiu,'柳鹫数据',this.yTableData)
+        // console.log(liujiu,'柳鹫数据',this.yTableData)
         if(hours<=10&&hours>=5){
           var b = liujiu.slice(5,11)
           this.options.xAxis.data= this.timeTableData.liujiuTime.slice(0,6)
           this.liujiuData = b
          this.countPeople.liujiu = b[b.length-1]
-        }else if(hours>=11&&hours<=16){
-          var b = liujiu.slice(11,17)
-          this.options.xAxis.data= this.timeTableData.liujiuTime.slice(6,12)
+        }else if(hours>=11&&hours<=14){
+          var b = liujiu.slice(9,15)
+          this.options.xAxis.data= this.timeTableData.liujiuTime.slice(4,10)
           this.liujiuData = b
          this.countPeople.liujiu = b[b.length-1]
-        }else if((hours>=17&&hours<=23)||(hours>=0&&hours<5)){
-          var b = liujiu.slice(14,19)
-          this.options.xAxis.data= this.timeTableData.liujiuTime.slice(9,14)
+        }else if((hours>=15&&hours<=23)||(hours>=0&&hours<5)){
+          var b = liujiu.slice(13,19)
+          this.options.xAxis.data= this.timeTableData.liujiuTime.slice(8,14)
           this.liujiuData = b
          this.countPeople.liujiu = b[b.length-1]
         }
@@ -398,21 +410,27 @@ export default {
         var binjiang = data.body.map(item=>{
           return item.value
         })
+        this.binjiangData = binjiang
          let yValue = Math.max(...binjiang)
         this.yTableData.binjiang = yValue
         this.yTableData.binjiangInterval = Math.ceil(yValue/4)
-        console.log(binjiang,'滨江数据',this.yTableData)
+        // console.log(binjiang,'滨江数据',this.yTableData)
         if(hours<=10&&hours>=5){
           var b = binjiang.slice(5,11)
           this.options.xAxis.data= this.timeTableData.binjiangTime.slice(0,6)
           this.binjiangData = b
          this.countPeople.binjiang = b[b.length-1]
-        }else if(hours>=11&&hours<=16){
-          var b = binjiang.slice(11,17)
-          this.options.xAxis.data= this.timeTableData.binjiangTime.slice(6,12)
+        }else if(hours>=11&&hours<=14){
+          var b = binjiang.slice(9,15)
+          this.options.xAxis.data= this.timeTableData.binjiangTime.slice(4,10)
           this.binjiangData = b
          this.countPeople.binjiang = b[b.length-1]
-        }else if((hours>=17&&hours<=23)||(hours>=0&&hours<5)){
+        }else if((hours>=15&&hours<=18)){
+          var b = binjiang.slice(13,19)
+          this.options.xAxis.data= this.timeTableData.binjiangTime.slice(8,14)
+          this.binjiangData = b
+         this.countPeople.binjiang = b[b.length-1]
+        }else if((hours>=19&&hours<=23)||(hours>=0&&hours<5)){
           var b = binjiang.slice(17,22)
           this.options.xAxis.data= this.timeTableData.binjiangTime.slice(12,17)
           this.binjiangData = b
@@ -423,21 +441,27 @@ export default {
         var senlin = data.body.map(item=>{
           return item.value
         })
+        this.senlinData = senlin
          let yValue = Math.max(...senlin)
         this.yTableData.senlin = yValue
         this.yTableData.senlinInterval = Math.ceil(yValue/4)
-        console.log(senlin,'森林数据',this.yTableData)
+        // console.log(senlin,'森林数据',this.yTableData)
         if(hours<=10&&hours>=5){
           var b = senlin.slice(5,11)
           this.options.xAxis.data= this.timeTableData.senlinTime.slice(0,6)
           this.senlinData = b
          this.countPeople.senlin = b[b.length-1]
-        }else if(hours>=11&&hours<=16){
-          var b = senlin.slice(11,17)
-          this.options.xAxis.data= this.timeTableData.senlinTime.slice(6,12)
+        }else if(hours>=11&&hours<=14){
+          var b = senlin.slice(9,15)
+          this.options.xAxis.data= this.timeTableData.senlinTime.slice(4,10)
           this.senlinData = b
          this.countPeople.senlin = b[b.length-1]
-        }else if((hours>=17&&hours<=23)||(hours>=0&&hours<5)){
+        }else if((hours>=15&&hours<=18)){
+          var b = senlin.slice(13,19)
+          this.options.xAxis.data= this.timeTableData.senlinTime.slice(8,14)
+          this.senlinData = b
+         this.countPeople.senlin = b[b.length-1]
+        }else if((hours>=19&&hours<=23)||(hours>=0&&hours<5)){
           var b = senlin.slice(17,22)
           this.options.xAxis.data= this.timeTableData.senlinTime.slice(12,17)
           this.senlinData = b
@@ -678,12 +702,16 @@ export default {
         var hours = newDate.getHours();
         var minutes = newDate.getMinutes();
         hours = hours < 10 ? "0" + hours : hours;
-        console.log(minutes)
-        //这里暂时定为30s请求一次数据
-        if(hours&&minutes==11){
+        // console.log(minutes%10)
+        //这里暂时定为10分钟请求一次数据
+        if(hours&&minutes%10==1){
           this.showData()
           console.log('请求了一次数据')
         }
+        // if(hours==5&&minutes%10==1||hours==11&&minutes%10==1||hours==15&&minutes%10==1||hours==19&&minutes%10==1){
+        //   console.log('更新x轴收据')
+        //   this.timeTable()
+        // }
       }, 30000);
     },
   }

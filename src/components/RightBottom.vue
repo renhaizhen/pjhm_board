@@ -68,8 +68,8 @@ export default {
           {
             type: "value",
             minInterval: 0,
-            interval: 1000,
-            max: 4000,
+            interval: 1750,
+            max: 7000,
             axisLabel: {
               textStyle: {
                 color: "#ffffff",
@@ -170,7 +170,11 @@ export default {
           }
         ]
       },
-      seriesData:[[],[],[],[],[]]
+      seriesData:[[],[],[],[],[]],
+      yTableData:{
+        qiji:4000,
+        qijiInterval:1000
+      }
     };
   },
   created() {
@@ -231,6 +235,10 @@ export default {
         this.seriesData[0]= data.body.map(item => {
           return item.value;
         });
+        var yValue = Math.max(...this.seriesData[0])
+        this.yTableData.qiji = yValue
+        this.yTableData.qijiInterval = Math.ceil(yValue/4)
+        // console.log(this.setOption.yAxis.max,this.setOption.yAxis.interval)
          this.setOption.series.forEach((item,index,arr)=>{
           arr[index].data = this.seriesData[index]
         })
@@ -260,15 +268,17 @@ export default {
         })
       });
       this.$http.post("/api/home/rightBinjiang").then(data => {
-        console.log(data.body,'body')
+        // console.log(data.body,'body')
         this.seriesData[4] = data.body.map(item=>{
           return item.value
         })
         this.setOption.series.forEach((item,index,arr)=>{
           arr[index].data = this.seriesData[index]
         })
-        console.log(this.seriesData,this.setOption.series,'右侧数据')
+        // console.log(this.seriesData,this.setOption.series,'右侧数据')
       });
+      this.setOption.yAxis.max=this.yTableData.qiji
+      this.setOption.yAxis.interval = this.yTableData.qijiInterval
     },
     eightDayData(){
       setInterval(() => {

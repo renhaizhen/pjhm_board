@@ -4,9 +4,12 @@ var router = express.Router()
 var mysql = require('mysql')
 var $sql = require('../sqlMap')
 
-//连接
+//连接getui_hmp
 var conn = mysql.createConnection(modules.mysql)
 conn.connect()
+//连接getui
+var conn2 = mysql.createConnection(modules.mysql2)
+conn2.connect()
 
 var jsonWrite = function(res,req){
     if(typeof req ==undefined){
@@ -40,7 +43,7 @@ router.post('/tourNum', (req, res) => {
   var sql = $sql.data.rightQiji
   // var params = req.body
   // console.log(params)
-  conn.query(sql, function (err, result) {
+  conn2.query(sql, function (err, result) {
     if (err) {
       console.log(err)
     }
@@ -56,7 +59,7 @@ router.post('/rightLiujiu', (req, res) => {
   var sql = $sql.data.rightLiujiu
   // var params = req.body
   // console.log(params)
-  conn.query(sql, function (err, result) {
+  conn2.query(sql, function (err, result) {
     if (err) {
       console.log(err)
     }
@@ -72,7 +75,7 @@ router.post('/rightLiujiu', (req, res) => {
   var sql = $sql.data.rightSenlin
   // var params = req.body
   // console.log(params)
-  conn.query(sql, function (err, result) {
+  conn2.query(sql, function (err, result) {
     if (err) {
       console.log(err)
     }
@@ -88,7 +91,7 @@ router.post('/rightLiujiu', (req, res) => {
   var sql = $sql.data.rightHuoli
   // var params = req.body
   // console.log(params)
-  conn.query(sql, function (err, result) {
+  conn2.query(sql, function (err, result) {
     if (err) {
       console.log(err)
     }
@@ -104,7 +107,7 @@ router.post('/rightLiujiu', (req, res) => {
   var sql = $sql.data.rightBinjiang
   // var params = req.body
   // console.log(params)
-  conn.query(sql, function (err, result) {
+  conn2.query(sql, function (err, result) {
     if (err) {
       console.log(err)
     }
