@@ -339,11 +339,11 @@ export default {
          this.countPeople.qiji = b[b.length-1]
         }else if((hours>=15&&hours<=18)){
           var b = qiji.slice(13,19)
-          this.options.xAxis.data= this.timeTableData.qijiTime.slice(12,14)
+          this.options.xAxis.data= this.timeTableData.qijiTime.slice(8,14)
           this.qijiData = b
          this.countPeople.qiji = b[b.length-1]
         }else if((hours>=19&&hours<=23)||(hours>=0&&hours<5)){
-          var b = qiji.slice(15,22)
+          var b = qiji.slice(17,22)
           this.options.xAxis.data= this.timeTableData.qijiTime.slice(12,17)
           this.qijiData = b
          this.countPeople.qiji = b[b.length-1]

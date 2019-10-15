@@ -226,8 +226,8 @@ export default {
       this.$http.post("/api/home/rightQiji").then(data => {
         //提取出x轴的日期
         this.setOption.xAxis[0].data = data.body.map((item, index) => {
-          return this.renderTime(item.time)
-            .slice(5, item.time.lastIndexOf(" "))
+          return this.renderTime(item.create_time)
+            .slice(5, item.create_time.lastIndexOf(" "))
             .split(" ")[0]
             .replace("-", "/");
         });
