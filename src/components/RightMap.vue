@@ -51,7 +51,7 @@ export default {
           strokeColor: "#19A4EB", 
           strokeOpacity: 0.8, 
           fillColor: "green", 
-          fillOpacity:0,
+          fillOpacity: 0,
           draggable: false,
           path: [
         [121.490164,31.058288], 
@@ -214,12 +214,13 @@ export default {
     new AMap.LngLat(121.490207,31.058215)
       ]
       var polygon = new AMap.Polygon({
-      path: path,  
+          zIndex: 0,
+          path: path,  
           strokeWeight: 2, 
-          strokeColor: "#19A4EB", 
+          strokeColor: "#95cd77", 
           strokeOpacity: 0.8, 
           fillColor: "#95cd77", 
-          fillOpacity:0.1,
+          fillOpacity:0.4,
           draggable: false,
     });
     map.add(polygon);
@@ -232,12 +233,13 @@ export default {
       map.plugin(["AMap.Heatmap"], function() {
         //初始化heatmap对象
         heatmap = new AMap.Heatmap(map, {
-          radius: 25, //给定半径
-          opacity: [0.4, 1],
+          zIndex: 160,
+          radius: 30, //给定半径
+          opacity: [0.1, 1],
           gradient: {
             0.3: "#96fa57",
-            0.9: "#f0ef5e",
-            1.0: "#f6784e"
+            0.6: "#f0ef2e",
+            1.0: "#ff3311"
           }
         });
         //设置数据集
@@ -246,7 +248,7 @@ export default {
           max: 100
         });
       });
-  }
+    }
   }
 }
 </script>
