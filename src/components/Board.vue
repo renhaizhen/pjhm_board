@@ -52,7 +52,7 @@ export default {
   data() {
     return {
       url:{
-        backgroundImage:"url("+require('../assets/bg.png')+")",
+        backgroundImage:"url("+require('../assets/bg.jpg')+")",
         backgroundSize:"100%",
 　　　　 backgroundRepeat:"no-repeat",
       }

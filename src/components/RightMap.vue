@@ -51,7 +51,7 @@ export default {
           strokeColor: "#19A4EB", 
           strokeOpacity: 0.8, 
           fillColor: "green", 
-          fillOpacity:0.1,
+          fillOpacity:0,
           draggable: false,
           path: [
         [121.490164,31.058288], 
@@ -110,7 +110,7 @@ export default {
       ],
       events: {
         init (o) {
-         o.setMapStyle('amap://styles/31444436f4e6420ee2c6b4ecec90f75f');//自定义的高德地图的样式  
+         o.setMapStyle('amap://styles/e7f54effac53e3fa92002a63daf40d5e');//自定义的高德地图的样式  
         },
       },
     }
@@ -158,7 +158,7 @@ export default {
         zoomEnable:true,
         dragEnable: true
       });
-      map.setMapStyle('amap://styles/31444436f4e6420ee2c6b4ecec90f75f')
+      map.setMapStyle('amap://styles/e7f54effac53e3fa92002a63daf40d5e')
       //绘制折线
       var path = [
     new AMap.LngLat(121.490164,31.058288), 
@@ -218,8 +218,8 @@ export default {
           strokeWeight: 2, 
           strokeColor: "#19A4EB", 
           strokeOpacity: 0.8, 
-          fillColor: "#007115", 
-          fillOpacity:0.3,
+          fillColor: "#95cd77", 
+          fillOpacity:0.1,
           draggable: false,
     });
     map.add(polygon);
@@ -233,7 +233,7 @@ export default {
         //初始化heatmap对象
         heatmap = new AMap.Heatmap(map, {
           radius: 25, //给定半径
-          opacity: [0, 0.8],
+          opacity: [0.4, 1],
           gradient: {
             0.3: "#96fa57",
             0.9: "#f0ef5e",
@@ -246,7 +246,7 @@ export default {
           max: 100
         });
       });
-	},
+  }
   }
 }
 </script>
