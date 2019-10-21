@@ -94,14 +94,6 @@ body{
   max-height:  100%;
   overflow: hidden;
 }
-/* div::-webkit-scrollbar {
-    width: 6px;
-    height: 6px;
-    background-color: rgba(122,122,122,0);
-  }
-  div::-webkit-scrollbar-thumb {
-    background:  rgba(157, 157, 157, 0.4);
-  } */
 .container{
   width: 1920px;
   height: 1080px;
