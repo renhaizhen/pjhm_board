@@ -155,8 +155,8 @@ export default {
         resizeEnable: false,
         center: [121.496837,31.048251],
         zoom: 14,
-        zoomEnable:false,
-        dragEnable: false
+        zoomEnable:true,
+        dragEnable: true
       });
       map.setMapStyle('amap://styles/31444436f4e6420ee2c6b4ecec90f75f')
       //绘制折线

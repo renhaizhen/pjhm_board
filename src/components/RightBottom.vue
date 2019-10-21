@@ -200,7 +200,7 @@ export default {
         }
       },
       deep: true //对象内部属性的监听，关键。
-    }
+    },
   },
   methods: {
     init() {
@@ -235,10 +235,11 @@ export default {
         this.seriesData[0]= data.body.map(item => {
           return item.value;
         });
-        var yValue = Math.max(...this.seriesData[0])
-        this.yTableData.qiji = yValue
-        this.yTableData.qijiInterval = Math.ceil(yValue/4)
-        // console.log(this.setOption.yAxis.max,this.setOption.yAxis.interval)
+        // var yValue = Math.max(...this.seriesData[0])
+        // this.yTableData.qiji = yValue
+        // this.yTableData.qijiInterval = Math.ceil(yValue/4)
+        // this.setOption.yAxis.max = this.yTableData.qiji
+        // this.setOption.yAxis.interval = this.yTableData.qijiInterval
          this.setOption.series.forEach((item,index,arr)=>{
           arr[index].data = this.seriesData[index]
         })

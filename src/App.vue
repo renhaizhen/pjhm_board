@@ -69,12 +69,18 @@ export default {
   margin: 0;
   padding: 0;
 }
+html{
+  overflow: hidden;
+}
 body{
   background-color: #2d6d3f;
   overflow: hidden;
   position: absolute;
   width: 100%;
   height: 100%;
+  overflow: scroll;
+  overflow-x:hidden; 
+  overflow-y: hidden;
 }
 #app {
   position: absolute;
@@ -88,6 +94,14 @@ body{
   max-height:  100%;
   overflow: hidden;
 }
+/* div::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+    background-color: rgba(122,122,122,0);
+  }
+  div::-webkit-scrollbar-thumb {
+    background:  rgba(157, 157, 157, 0.4);
+  } */
 .container{
   width: 1920px;
   height: 1080px;
