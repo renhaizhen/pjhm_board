@@ -10,8 +10,8 @@ export default {
   name: "RightBottom",
   data() {
     return {
-      chartWidth: "1054px",
-      chartHeight: "207px",
+      chartWidth: "1065px",
+      chartHeight: "237px",
       setOption: {
         backgroundColor: "#2d6d3e",
         grid: {
@@ -102,7 +102,7 @@ export default {
             name: "奇迹花园区",
             type: "bar",
             data: [],
-            barWidth:15,
+            barWidth:20,
             barGap: 0, //柱间距离
             itemStyle: {
               //图形样式
@@ -116,7 +116,7 @@ export default {
             name: "柳鹫田园区",
             type: "bar",
             data: [],
-            barWidth: 15,
+            barWidth: 20,
             barGap: 0, //柱间距离
             itemStyle: {
               //图形样式
@@ -130,7 +130,7 @@ export default {
             name: "森林游憩区",
             type: "bar",
             data: [],
-            barWidth: 15,
+            barWidth: 20,
             barGap: 0.2, //柱间距离
             itemStyle: {
               //图形样式
@@ -144,7 +144,7 @@ export default {
             name: "活力森林区",
             type: "bar",
             data: [],
-            barWidth: 15,
+            barWidth: 20,
             barGap: 0, //柱间距离
             itemStyle: {
               //图形样式
@@ -158,7 +158,7 @@ export default {
             name: "滨江漫步区",
             type: "bar",
             data: [],
-            barWidth: 15,
+            barWidth: 20,
             barGap: 0, //柱间距离
             itemStyle: {
               //图形样式

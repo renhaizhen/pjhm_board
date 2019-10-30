@@ -108,12 +108,15 @@ body{
   height: 177px;
 }
 .leftContent{
-  height: 511px;
+  height: 901px;
   border: 1px solid #ffffff;
 }
 .leftBottom{
-  /* height: 202px; */
-  position: relative;
+  height: 202px;
+  width: 777px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
 }
 .right{
   width: 1143px;
@@ -123,7 +126,7 @@ body{
   height: 180px;
 }
 .rightContent{
-  height: 543px;
+  height: 490px;
   position: relative;
   box-sizing: border-box
   /* width: 1139px; */
@@ -133,5 +136,7 @@ body{
 }
 .rightBottom{
   height: 254px;
+  margin-top: -24px;
+
 }
 </style>

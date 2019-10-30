@@ -38,12 +38,12 @@ export default {
   background-color: #51a769;
   width: 242px;
   height: 69px;
-  border-radius: 34.5px;
+  border-radius: 35px;
   font-family: "SHSCNBold";
   text-align: center;
   line-height: 69px;
   margin-top: 33px;
-  margin-left: 10px;
+  margin-left: 65px;
 }
 .desRight {
   float: right;
@@ -55,7 +55,7 @@ export default {
   font-size: 20px;
   font-family: "SHSCNMidium";
   width: 200px;
-  height: 36px;
+  height: 48px;
   display: inline-block;
   position: relative;
 }

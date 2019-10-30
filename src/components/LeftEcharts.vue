@@ -733,7 +733,7 @@ export default {
   margin-top: 32px;
   margin-left: 55px;
   left: 0;
-  top: 0;
+  top: -65px;
 }
 .chart {
   display: inline-block;
@@ -744,6 +744,7 @@ export default {
   position: relative;
   width: 1065px;
   margin: 0 auto;
+  margin-top: 65px;
 }
 .mycharts span {
   position: absolute;
@@ -756,31 +757,27 @@ export default {
   line-height: 37px;
 }
 .mycharts .iconqiji {
-  top: 38px;
-  left: 205px;
+  top: 16px;
+  left: 480px;
   color: #2d6d3f;
 }
 .iconhuoli {
-  top: 38px;
-  left: 453px;
+  top: 16px;
+  left: 834px;
 }
 .iconliujiu {
-  top: 38px;
-  left: 700px;
+  top: 266px;
+  left: 286px;
 }
 .iconbinjiang {
-  top: 310px;
-  left: 330px;
+  top: 266px;
+  left: 635px;
 }
 .iconsenlin {
-  top: 310px;
-  left: 583px;
+  top: 266px;
+  left: 988px;
 }
 .qiji{
   margin-left: 198px;
-  padding-top: 40px;
-}
-.huoli{
-  padding-top: 40px;
 }
 </style>

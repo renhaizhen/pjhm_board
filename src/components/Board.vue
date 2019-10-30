@@ -5,7 +5,7 @@
           <Header/>
         </div>
          <div class="leftContent">
-        <HMap/>
+        <HMap/>  
         </div>
         <div class="leftBottom">
           <LeftBottom/>
@@ -25,6 +25,7 @@
           <RightBottom/>
         </div>
       </div>
+      <span class="circle5"></span>
     </div>
 </template>
 
@@ -62,4 +63,15 @@ export default {
 </script>
 
 <style scoped>
+.circle5{
+  display: inline-block;
+  height: 160px;
+  width: 160px;
+  background-color: #5db874 ;
+  left: 690px;
+  bottom: -66px; 
+  z-index: 102;
+  position: absolute;
+  border-radius: 50%;
+}
 </style>
