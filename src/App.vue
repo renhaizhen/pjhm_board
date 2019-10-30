@@ -102,44 +102,36 @@ body{
 }
 .left{
   width: 777px;
-  /* background-color: bisque; */
   float: left;
 }
 .leftTop{
   height: 177px;
-  /* background-color: green; */
-
 }
 .leftContent{
-  height: 701px;
-  /* background-color: palevioletred; */
-
+  height: 511px;
+  border: 1px solid #ffffff;
 }
 .leftBottom{
-  height: 202px;
-  /* background-color: blue; */
+  /* height: 202px; */
   position: relative;
 }
 .right{
   width: 1143px;
-  /* background-color: black; */
   float: right;
 }
 .rightTop{
   height: 180px;
 }
 .rightContent{
-  height: 511px;
-  width: 1139px;
-  border: 1px solid #ffffff;
-  margin-top: 3px;
+  height: 543px;
+  position: relative;
+  box-sizing: border-box
+  /* width: 1139px; */
 }
 .rightBottomDes{
   height: 130px;
-  /* background-color: pink; */
 }
 .rightBottom{
   height: 254px;
-  /* background-color: purple; */
 }
 </style>

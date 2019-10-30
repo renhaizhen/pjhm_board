@@ -4,8 +4,8 @@
         <div class="leftTop">
           <Header/>
         </div>
-        <div class="leftContent">
-          <LeftEcharts/>
+         <div class="leftContent">
+        <HMap/>
         </div>
         <div class="leftBottom">
           <LeftBottom/>
@@ -16,7 +16,7 @@
           <RightTop/>
         </div>
         <div class="rightContent">
-        <HMap/>
+          <LeftEcharts/>
         </div>
         <div class="rightBottomDes">
           <RightBottomDes/>

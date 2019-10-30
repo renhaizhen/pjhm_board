@@ -11,7 +11,7 @@
       <div
         ref="huoli"
         :data-title="allTitle.huoli"
-        class="chart"
+        class="chart huoli"
         :style="{width:chartWidth,height:chartHeight}"
       ></div>
       <div
@@ -46,8 +46,8 @@ export default {
   name: "LeftEcharts",
   data() {
     return {
-      chartWidth: "240px",
-      chartHeight: "240px",
+      chartWidth: "350px",
+      chartHeight: "250px",
       iconImg: {
         qiji: {
           backgroundImage: "url(" + require("../assets/qiji.png") + ")",
@@ -77,10 +77,10 @@ export default {
       },
       options: {
         grid: {
-          x: 40,
+          x: 50,
           y: 30,
-          x2: 10,
-          y2: 30
+          x2: 20,
+          y2: 40
         },
         title: {
           text: "奇迹花园区",
@@ -100,7 +100,7 @@ export default {
             textStyle: {
               color: "#ffffff"
             },
-            fontSize:12,
+            fontSize:16,
             fontFamily:'MONLight'
           },
           splitLine: {
@@ -127,7 +127,7 @@ export default {
             textStyle: {
               color: "#ffffff"
             },
-            fontSize:14,
+            fontSize:16,
             fontFamily:'MONLight'
           },
           axisLine: {
@@ -612,7 +612,7 @@ export default {
             textStyle: {
               color: "#ffffff"
             },
-            fontSize:12,
+            fontSize:16,
             fontFamily:'MONLight'
           },
           axisLine: {
@@ -720,6 +720,7 @@ export default {
 
 <style scoped>
 .text {
+  position: absolute;
   display: inline-block;
   width: 190px;
   height: 69px;
@@ -731,16 +732,18 @@ export default {
   border-radius: 30px;
   margin-top: 32px;
   margin-left: 55px;
+  left: 0;
+  top: 0;
 }
 .chart {
   display: inline-block;
   box-sizing: border-box;
-  padding-left: 5px;
-  padding-top: 30px;
 }
 .mycharts {
   overflow: hidden;
   position: relative;
+  width: 1065px;
+  margin: 0 auto;
 }
 .mycharts span {
   position: absolute;
@@ -774,10 +777,10 @@ export default {
   left: 583px;
 }
 .qiji{
-  margin-left: 15px;
+  margin-left: 198px;
+  padding-top: 40px;
 }
-.binjiang {
-  margin-left: 140px;
-  margin-right: 5px;
+.huoli{
+  padding-top: 40px;
 }
 </style>

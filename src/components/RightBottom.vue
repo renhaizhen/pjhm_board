@@ -300,4 +300,7 @@ export default {
 </script>
 
 <style scoped>
+.chart{
+  margin-left: 42px
+}
 </style>
