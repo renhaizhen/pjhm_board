@@ -29,7 +29,7 @@
 <style lang="css">
 .amap-wrapper {
   width: 775px;
-  height: 903px;
+  height: 900px;
 }
 </style>
 
@@ -43,7 +43,7 @@ export default {
       address: null,
       amapManager,
       center: [121.496837,31.048251],
-      zoom: 14,
+      zoom: 10,
       mapData:null,
       polygons:[
         {
@@ -224,7 +224,6 @@ export default {
           draggable: false,
     });
     map.add(polygon);
-
       let heatmap;
       let heatmapData = [
         { lng: 121.490164, lat: 31.058288, count: 1555 },

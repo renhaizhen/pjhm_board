@@ -31,12 +31,14 @@ export default {
         var day = newDate.getDate();
         var hours = newDate.getHours();
         var minutes = newDate.getMinutes();
+        var seconds = newDate.getSeconds()
         month = month < 10 ? "0" + month : month;
         day = day < 10 ? "0" + day : day;
         hours = hours < 10 ? "0" + hours : hours;
         minutes = minutes < 10 ? "0" + minutes : minutes;
+        seconds = seconds < 10 ? "0" + seconds : seconds;
         this.date = month + "-" + day;
-        this.time = hours + ":" + minutes;
+        this.time = hours + ":" + minutes+ ":" + seconds;
         //获取星期
         var weekday = new Array(7);
         weekday[0] = "周日";
@@ -71,19 +73,19 @@ export default {
   background-color: #2B9B58 ;
   width: 183px;
   font-family: 'SHSCNMidium';
-  margin-left: 50px;
+  margin-left: 10px;
 }
 .date{
   background-color: #a0bd44;
   width: 216px;
-  font-family: 'SHSCNMidium';
+  font-family: 'MONLight';
   margin: 0 30px;
 
 }
 .time{
   background-color: #83c3cc;
-  width: 203px;
-  font-family: 'SHSCNMidium';
+  width: 270px;
+  font-family: 'MONLight';
 }
 
 </style>

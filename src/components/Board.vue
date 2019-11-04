@@ -26,6 +26,7 @@
         </div>
       </div>
       <span class="circle5"></span>
+      <!-- <TestEcharts/> -->
     </div>
 </template>
 
@@ -38,6 +39,7 @@ import HMap from '@/components/RightMap'
 import LeftBottom from '@/components/LeftBottom'
 import RightBottomDes from '@/components/RightBottomDes'
 import RightBottom from '@/components/RightBottom'
+// import TestEcharts from '@/components/TestEcharts'
 export default {
   name: 'Board',
   components: {
@@ -48,7 +50,8 @@ export default {
     RightTop,
     HMap,
     RightBottomDes,
-    RightBottom
+    RightBottom,
+    // TestEcharts
   },
   data() {
     return {

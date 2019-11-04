@@ -110,6 +110,7 @@ body{
 .leftContent{
   height: 901px;
   border: 1px solid #ffffff;
+  margin-top: 3px;
 }
 .leftBottom{
   height: 202px;
@@ -137,6 +138,5 @@ body{
 .rightBottom{
   height: 254px;
   margin-top: -24px;
-
 }
 </style>
