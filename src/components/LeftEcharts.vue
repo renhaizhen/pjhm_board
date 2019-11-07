@@ -735,6 +735,12 @@ export default {
   margin: 0 auto;
   margin-top: 65px;
 }
+@keyframes glowing{
+  0% {box-shadow: 0 0 -10px #c4a300;}
+  40% {box-shadow: 0 0 20px #c4a300;}
+  60% {box-shadow: 0 0 20px #c4a300;}
+  100% {box-shadow: 0 0 -10px #c4a300;}
+}
 .mycharts span {
   position: absolute;
   width: 46px;
@@ -742,8 +748,10 @@ export default {
   font-size: 14px;
   font-family: 'SHSCNHeavy';
   color: #ffffff;
+  background: transparent;
   text-align: center;
   line-height: 37px;
+  /* animation: glowing 5000ms infinite; */
 }
 .mycharts .iconqiji {
   top: -1px;
