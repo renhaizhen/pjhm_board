@@ -32,11 +32,11 @@
         class="chart senlin"
         :style="{width:chartWidth,height:chartHeight}"
       ></div>
-      <span class="iconqiji" :style="iconImg.qiji">{{countPeople.qiji}}</span>
-      <span class="iconhuoli" :style="iconImg.huoli">{{countPeople.huoli}}</span>
-      <span class="iconliujiu" :style="iconImg.liujiu">{{countPeople.liujiu}}</span>
-      <span class="iconbinjiang" :style="iconImg.binjiang">{{countPeople.binjiang}}</span>
-      <span class="iconsenlin" :style="iconImg.senlin">{{countPeople.senlin}}</span>
+      <span class="iconqiji">{{countPeople.qiji}}</span>
+      <span class="iconhuoli">{{countPeople.huoli}}</span>
+      <span class="iconliujiu">{{countPeople.liujiu}}</span>
+      <span class="iconbinjiang">{{countPeople.binjiang}}</span>
+      <span class="iconsenlin">{{countPeople.senlin}}</span>
     </div>
   </div>
 </template>
@@ -48,33 +48,6 @@ export default {
     return {
       chartWidth: "350px",
       chartHeight: "250px",
-      iconImg: {
-        qiji: {
-          backgroundImage: "url(" + require("../assets/qiji.png") + ")",
-          backgroundSize: "100%",
-          backgroundRepeat: "no-repeat"
-        },
-        huoli: {
-          backgroundImage: "url(" + require("../assets/huoli.png") + ")",
-          backgroundSize: "100%",
-          backgroundRepeat: "no-repeat"
-        },
-        liujiu: {
-          backgroundImage: "url(" + require("../assets/liujiu.png") + ")",
-          backgroundSize: "100%",
-          backgroundRepeat: "no-repeat"
-        },
-        binjiang: {
-          backgroundImage: "url(" + require("../assets/binjiang.png") + ")",
-          backgroundSize: "100%",
-          backgroundRepeat: "no-repeat"
-        },
-        senlin: {
-          backgroundImage: "url(" + require("../assets/senlin.png") + ")",
-          backgroundSize: "100%",
-          backgroundRepeat: "no-repeat"
-        }
-      },
       options: {
         grid: {
           x: 50,
@@ -730,49 +703,84 @@ export default {
 }
 .mycharts {
   overflow: hidden;
-  position: relative;
+  /* position: relative; */
   width: 1065px;
   margin: 0 auto;
   margin-top: 65px;
 }
-@keyframes glowing{
-  0% {box-shadow: 0 0 -10px #c4a300;}
-  40% {box-shadow: 0 0 20px #c4a300;}
-  60% {box-shadow: 0 0 20px #c4a300;}
-  100% {box-shadow: 0 0 -10px #c4a300;}
-}
 .mycharts span {
   position: absolute;
-  width: 46px;
-  height: 30px;
-  font-size: 14px;
-  font-family: 'SHSCNHeavy';
+  width: 80px;
+  height: 35px;
+  line-height: 35px;
+  font-size: 22px;
+  font-family: 'SHSCNBold';
+  font-weight: bold;
   color: #ffffff;
-  background: transparent;
+  border-radius: 17.5px;
   text-align: center;
   line-height: 37px;
-  /* animation: glowing 5000ms infinite; */
+}
+@keyframes qijiGlowing{
+  0% {box-shadow: 0 0 -10px #ffffff;}
+  40% {box-shadow: 0 0 20px #ffffff;}
+  60% {box-shadow: 0 0 20px #ffffff;}
+  100% {box-shadow: 0 0 -10px #ffffff;}
 }
 .mycharts .iconqiji {
-  top: -1px;
-  left: 480px;
+  top: -19px;
+  left: 488px;
   color: #2d6d3f;
+  background: #ffffff;
+  animation: qijiGlowing 5000ms infinite;
+}
+@keyframes huoliGlowing{
+  0% {box-shadow: 0 0 -10px #5DB874;}
+  40% {box-shadow: 0 0 20px #5DB874;}
+  60% {box-shadow: 0 0 20px #5DB874;}
+  100% {box-shadow: 0 0 -10px #5DB874;}
 }
 .iconhuoli {
-  top: -1px;
-  left: 834px;
+  top: -19px;
+  left: 846px;
+  background: #5DB874 ;
+  animation: huoliGlowing 5000ms infinite;
+}
+@keyframes liujiuGlowing{
+  0% {box-shadow: 0 0 -10px #A0BD44;}
+  40% {box-shadow: 0 0 20px #A0BD44;}
+  60% {box-shadow: 0 0 20px #A0BD44;}
+  100% {box-shadow: 0 0 -10px #A0BD44;}
 }
 .iconliujiu {
-  top: 250px;
-  left: 286px;
+  top: 243px;
+  left: 292px;
+  background: #A0BD44 ;
+  animation: liujiuGlowing 5000ms infinite;
+}
+@keyframes binjiangGlowing{
+  0% {box-shadow: 0 0 -10px #86CCD6;}
+  40% {box-shadow: 0 0 20px #86CCD6;}
+  60% {box-shadow: 0 0 20px #86CCD6;}
+  100% {box-shadow: 0 0 -10px #86CCD6;}
 }
 .iconbinjiang {
-  top: 250px;
-  left: 635px;
+  top: 243px;
+  left: 648px;
+  background:  #86CCD6 ;
+  animation: binjiangGlowing 5000ms infinite;
+}
+@keyframes senlinGlowing{
+  0% {box-shadow: 0 0 -10px #e4c64c;}
+  40% {box-shadow: 0 0 20px #e4c64c;}
+  60% {box-shadow: 0 0 20px #e4c64c;}
+  100% {box-shadow: 0 0 -10px #e4c64c;}
 }
 .iconsenlin {
-  top: 250px;
-  left: 988px;
+  top: 243px;
+  left: 1007px;
+  background: #e4c64c;
+  animation: senlinGlowing 5000ms infinite;
 }
 .qiji{
   margin-left: 198px;
