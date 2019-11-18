@@ -10,6 +10,16 @@
 </template>
 
 <script>
+const config = {
+  binjiang: {
+    password: '123',
+    title: '上海滨江花园公园数据大屏'
+  },
+    pujiang: {
+    password: '123',
+    title: '上海浦江郊野公园数据大屏'
+  },
+};
 export default {
   name: "Login",
   data() {
@@ -26,29 +36,18 @@ export default {
   },
   methods:{
     login(){
-      console.log(this.$refs.account.value,this.$refs.password.value)
       let account = this.$refs.account.value
       let password = this.$refs.password.value
-      console.log(this.accountTitle[1].binjiang)
-      if(account=='binjiang'&&password=='123'){
-        var userData = {'account':account,"password":password,"title":this.accountTitle[0].binjiang};
-        localStorage.setItem("userData",JSON.stringify(userData));
-        this.$router.push({
+      const info = config[account];
+      if (!info) return  alert('用户名或密码错误...');
+      if (password !== info.password) return  alert('用户名或密码错误...');
+      localStorage.setItem("userData",JSON.stringify(info));
+      this.$router.push({
         name: 'Board',
         params: {
-          title:this.accountTitle[0].binjiang
+          title: info.title
         }
-      })
-      }else if(account=='pujiang'&&password=='123'){
-        var userData = {'account':account,"password":password,"title":this.accountTitle[1].pujiang};
-        localStorage.setItem("userData",JSON.stringify(userData));
-        this.$router.push({
-        name: 'Board',
-        params: {
-          title:this.accountTitle[0].pujiang
-        }
-      })
-      }
+      });
     }
   }
 };
